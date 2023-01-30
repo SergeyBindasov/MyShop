@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct MSGetAllProdactInfo: Codable {
+    let products: [MSProduct]
+    let total: Int
+    let skip: Int
+    let limit: Int
+}
+
 struct MSProduct: Codable {
     let id: Int
     let title: String

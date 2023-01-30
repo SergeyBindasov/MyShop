@@ -16,6 +16,8 @@
 		A5D746162988126A00C3F081 /* MSCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D746152988126A00C3F081 /* MSCartViewController.swift */; };
 		A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D746172988128B00C3F081 /* MSProfileViewController.swift */; };
 		A5D7461A298817F300C3F081 /* MSProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D74619298817F300C3F081 /* MSProduct.swift */; };
+		A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D7461B29881C2B00C3F081 /* MSService.swift */; };
+		A5D7461E29881CD100C3F081 /* MSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D7461D29881CD100C3F081 /* MSRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A5D746152988126A00C3F081 /* MSCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCartViewController.swift; sourceTree = "<group>"; };
 		A5D746172988128B00C3F081 /* MSProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProfileViewController.swift; sourceTree = "<group>"; };
 		A5D74619298817F300C3F081 /* MSProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProduct.swift; sourceTree = "<group>"; };
+		A5D7461B29881C2B00C3F081 /* MSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSService.swift; sourceTree = "<group>"; };
+		A5D7461D29881CD100C3F081 /* MSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 		A5D746112988108900C3F081 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				A5D7461B29881C2B00C3F081 /* MSService.swift */,
+				A5D7461D29881CD100C3F081 /* MSRequest.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -213,8 +219,10 @@
 				A5D745FC29880CDE00C3F081 /* MSTabBarViewController.swift in Sources */,
 				A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */,
 				A5D746162988126A00C3F081 /* MSCartViewController.swift in Sources */,
+				A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */,
 				A5D746142988121E00C3F081 /* MSCatalogViewController.swift in Sources */,
 				A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */,
+				A5D7461E29881CD100C3F081 /* MSRequest.swift in Sources */,
 				A5D745FA29880CDE00C3F081 /* SceneDelegate.swift in Sources */,
 				A5D7461A298817F300C3F081 /* MSProduct.swift in Sources */,
 			);
