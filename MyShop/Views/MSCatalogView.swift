@@ -18,7 +18,6 @@ final class MSCatalogView: UIView {
         self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        //backgroundColor = .systemBlue
         let collectionView = createCollectionView()
         self.collectionView = collectionView
         addSubviews(collectionView)
@@ -45,7 +44,7 @@ final class MSCatalogView: UIView {
             return self.createSection(for: sectionIndex)
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MSPromoCollectionViewCell.self, forCellWithReuseIdentifier:MSPromoCollectionViewCell.identifier)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell2")
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false

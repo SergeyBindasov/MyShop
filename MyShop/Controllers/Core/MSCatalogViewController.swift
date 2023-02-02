@@ -52,7 +52,7 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         let sectionType = viewModel.sections[section]
         switch sectionType {
         case .promo:
-            return 4
+            return PromoPics.all.count
         case .categories:
             return 18
             
@@ -65,8 +65,8 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         switch sectionType {
             
         case .promo:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = .systemMint
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSPromoCollectionViewCell.identifier, for: indexPath) as? MSPromoCollectionViewCell else { fatalError() }
+            cell.configure(with: PromoPics.all[indexPath.row]!)
             return cell
         case .categories:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
