@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A573FE9F298BDEF0003488C0 /* MSCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FE9E298BDEEF003488C0 /* MSCatalogView.swift */; };
+		A573FEA1298BDF1A003488C0 /* MSCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FEA0298BDF1A003488C0 /* MSCatalogViewModel.swift */; };
+		A573FEA3298BDFCB003488C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FEA2298BDFCB003488C0 /* Extensions.swift */; };
 		A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745F729880CDE00C3F081 /* AppDelegate.swift */; };
 		A5D745FA29880CDE00C3F081 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745F929880CDE00C3F081 /* SceneDelegate.swift */; };
 		A5D745FC29880CDE00C3F081 /* MSTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745FB29880CDE00C3F081 /* MSTabBarViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A573FE9E298BDEEF003488C0 /* MSCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCatalogView.swift; sourceTree = "<group>"; };
+		A573FEA0298BDF1A003488C0 /* MSCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCatalogViewModel.swift; sourceTree = "<group>"; };
+		A573FEA2298BDFCB003488C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5D745F429880CDE00C3F081 /* MyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D745F729880CDE00C3F081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5D745F929880CDE00C3F081 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D7460229880CE000C3F081 /* LaunchScreen.storyboard */,
+				A573FE9E298BDEEF003488C0 /* MSCatalogView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 		A5D7460D2988104500C3F081 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A573FEA0298BDF1A003488C0 /* MSCatalogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 				A5D7460029880CE000C3F081 /* Assets.xcassets */,
 				A5D745F729880CDE00C3F081 /* AppDelegate.swift */,
 				A5D745F929880CDE00C3F081 /* SceneDelegate.swift */,
+				A573FEA2298BDFCB003488C0 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -222,8 +231,11 @@
 				A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */,
 				A5D746142988121E00C3F081 /* MSCatalogViewController.swift in Sources */,
 				A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */,
+				A573FEA1298BDF1A003488C0 /* MSCatalogViewModel.swift in Sources */,
+				A573FEA3298BDFCB003488C0 /* Extensions.swift in Sources */,
 				A5D7461E29881CD100C3F081 /* MSRequest.swift in Sources */,
 				A5D745FA29880CDE00C3F081 /* SceneDelegate.swift in Sources */,
+				A573FE9F298BDEF0003488C0 /* MSCatalogView.swift in Sources */,
 				A5D7461A298817F300C3F081 /* MSProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
