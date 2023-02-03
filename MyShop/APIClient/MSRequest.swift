@@ -12,7 +12,7 @@ final class MSRequest {
     private struct Constants {
         
         /// API Constant
-        static let baseUrl = "https://dummyjson.com/products"
+        static let baseUrl = "https://dummyjson.com/products/categories"
     }
     
     public var url: URL? {

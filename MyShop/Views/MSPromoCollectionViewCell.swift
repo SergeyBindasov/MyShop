@@ -20,7 +20,6 @@ final class MSPromoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemIndigo
         contentView.addSubview(imageView)
         setupConstraints()
     }

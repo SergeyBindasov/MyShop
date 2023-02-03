@@ -45,7 +45,7 @@ final class MSCatalogView: UIView {
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MSPromoCollectionViewCell.self, forCellWithReuseIdentifier:MSPromoCollectionViewCell.identifier)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell2")
+        collectionView.register(MSCategoriesCollectionViewCell.self, forCellWithReuseIdentifier: MSCategoriesCollectionViewCell.identifier)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView

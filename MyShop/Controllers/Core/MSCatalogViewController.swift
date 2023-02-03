@@ -9,6 +9,9 @@ import UIKit
 
 final class MSCatalogViewController: UIViewController {
     
+    let request = MSRequest()
+    var catergory: [String] = []
+    
     private let viewModel = MSCatalogViewModel()
     private let catalogView: MSCatalogView
     
@@ -28,6 +31,21 @@ final class MSCatalogViewController: UIViewController {
         setupLayout()
         catalogView.collectionView?.delegate = self
         catalogView.collectionView?.dataSource = self
+        
+//
+//        MSService.shared.makeCategiryRequest(with: request, complition: { [weak self] result in
+//
+//
+//                   switch result {
+//                   case .success(let sucssess):
+//
+//                       print(sucssess)
+//                   case .failure(let error):
+//                       print(error)
+//                   }
+//
+//        })
+        
     }
     
     private func setupLayout() {
@@ -54,8 +72,14 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         case .promo:
             return PromoPics.all.count
         case .categories:
-            return 18
-            
+            return 20
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+        let categoryVC = MSCategoryViewController(category: catergory[indexPath.row])
+        navigationController?.pushViewController(categoryVC, animated: true)
         }
     }
     
@@ -69,25 +93,17 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.configure(with: PromoPics.all[indexPath.row]!)
             return cell
         case .categories:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
-            cell.backgroundColor = .systemTeal
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCategoriesCollectionViewCell.identifier, for: indexPath) as? MSCategoriesCollectionViewCell else { fatalError() }
+                    MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
+                               switch result {
+                               case .success(let sucssess):
+                                   self?.catergory = sucssess
+                                   cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
+                               case .failure(let error):
+                                   print(error)
+                               }
+                    })
             return cell
         }
     }
 }
-
-
-//let request = MSRequest()
-//var products: [MSGetAllProdactInfo] = []
-//        MSService.shared.execute(request,
-//                                 expecting: MSGetAllProdactInfo.self) { [weak self] result in
-//
-//            switch result {
-//            case .success(let sucssess):
-//                let array = sucssess.products
-//               print(array)
-//            case .failure(let error):
-//                print(error)
-//            }
-//
-//            }

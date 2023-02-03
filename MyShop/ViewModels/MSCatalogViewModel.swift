@@ -10,8 +10,8 @@ import UIKit
 final class MSCatalogViewModel {
     
     enum SectionType {
-            case promo
-            case categories
+        case promo
+        case categories
         }
     public var sections: [SectionType] = []
     
@@ -23,6 +23,7 @@ final class MSCatalogViewModel {
             sections = [
                 .promo,
                 .categories
+               
             ]
     }
     
@@ -53,7 +54,7 @@ final class MSCatalogViewModel {
             
             let item = NSCollectionLayoutItem(layoutSize:
                                                 NSCollectionLayoutSize(
-                                                    widthDimension: .fractionalWidth(0.5),
+                                                    widthDimension: .fractionalWidth(0.25),
                                                     heightDimension: .fractionalHeight(1.0)))
             item.contentInsets = NSDirectionalEdgeInsets(
                 top: 2,
@@ -63,7 +64,7 @@ final class MSCatalogViewModel {
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(150)),
+                    heightDimension: .absolute(140)),
                 subitems: [item, item])
            let section = NSCollectionLayoutSection(group: group)
            
