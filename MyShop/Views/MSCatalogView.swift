@@ -44,9 +44,13 @@ final class MSCatalogView: UIView {
             return self.createSection(for: sectionIndex)
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(MSPromoCollectionViewCell.self, forCellWithReuseIdentifier:MSPromoCollectionViewCell.identifier)
-        collectionView.register(MSCategoriesCollectionViewCell.self, forCellWithReuseIdentifier: MSCategoriesCollectionViewCell.identifier)
         
+        collectionView.register(MSOffersHeaderViewCell.self, forCellWithReuseIdentifier:MSOffersHeaderViewCell.identifier)
+       
+        collectionView.register(MSPromoCollectionViewCell.self, forCellWithReuseIdentifier:MSPromoCollectionViewCell.identifier)
+        collectionView.register(MSCatalogHeaderViewCell.self, forCellWithReuseIdentifier:MSCatalogHeaderViewCell.identifier)
+        collectionView.register(MSCategoriesCollectionViewCell.self, forCellWithReuseIdentifier: MSCategoriesCollectionViewCell.identifier)
+       
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }
@@ -54,8 +58,12 @@ final class MSCatalogView: UIView {
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
         let sectionType = viewModel.sections
         switch sectionType[sectionIndex] {
+        case.firstHeader:
+            return viewModel.createHeaderSectionLayout()
         case .promo:
             return viewModel.createPromoSectionLayout()
+        case .secondHeader:
+            return viewModel.createSecondHeaderSectionLayout()
         case .categories:
             return viewModel.createCategoriesSectionLayout()
         }

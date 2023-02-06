@@ -26,25 +26,12 @@ final class MSCatalogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "All goods"
+        title = "Welcome!"
         view.addSubview(catalogView)
         setupLayout()
         catalogView.collectionView?.delegate = self
         catalogView.collectionView?.dataSource = self
-        
-//
-//        MSService.shared.makeCategiryRequest(with: request, complition: { [weak self] result in
-//
-//
-//                   switch result {
-//                   case .success(let sucssess):
-//
-//                       print(sucssess)
-//                   case .failure(let error):
-//                       print(error)
-//                   }
-//
-//        })
+
         
     }
     
@@ -69,10 +56,14 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionType = viewModel.sections[section]
         switch sectionType {
+        case .firstHeader:
+            return 1
         case .promo:
             return PromoPics.all.count
+        case .secondHeader:
+            return 1
         case .categories:
-            return 20
+            return CategoryPics.all.count
         }
     }
     
@@ -83,14 +74,23 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
+  
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionType = viewModel.sections[indexPath.section]
         switch sectionType {
-            
+        case.firstHeader:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSOffersHeaderViewCell.identifier, for: indexPath) as? MSOffersHeaderViewCell else { fatalError() }
+            cell.configure()
+            return cell
         case .promo:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSPromoCollectionViewCell.identifier, for: indexPath) as? MSPromoCollectionViewCell else { fatalError() }
             cell.configure(with: PromoPics.all[indexPath.row]!)
+            return cell
+        case .secondHeader:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCatalogHeaderViewCell.identifier, for: indexPath) as? MSCatalogHeaderViewCell else { fatalError() }
+            cell.configure()
             return cell
         case .categories:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCategoriesCollectionViewCell.identifier, for: indexPath) as? MSCategoriesCollectionViewCell else { fatalError() }
