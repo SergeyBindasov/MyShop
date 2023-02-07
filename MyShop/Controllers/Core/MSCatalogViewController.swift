@@ -9,7 +9,7 @@ import UIKit
 
 final class MSCatalogViewController: UIViewController {
     
-    let request = MSRequest()
+    let request = MSRequest(urlPath: "/categories")
     var catergory: [String] = []
     
     private let viewModel = MSCatalogViewModel()
@@ -26,7 +26,7 @@ final class MSCatalogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Welcome!"
+        title = "My shop"
         view.addSubview(catalogView)
         setupLayout()
         catalogView.collectionView?.delegate = self
@@ -68,8 +68,8 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-        let categoryVC = MSCategoryViewController(category: catergory[indexPath.row])
+        if indexPath.section == 3 {
+            let categoryVC = MSCategoryViewController(category: catergory[indexPath.row], viewModel: MSCategoryViewModel(category: catergory[indexPath.row]))
         navigationController?.pushViewController(categoryVC, animated: true)
         }
     }
