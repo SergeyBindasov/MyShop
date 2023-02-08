@@ -23,8 +23,6 @@ final class MSPromoCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.layer.cornerRadius = 8
         setupConstraints()
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -32,8 +30,6 @@ final class MSPromoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
-       
-        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),

@@ -10,12 +10,12 @@ import UIKit
 final class MSCategoryViewController: UIViewController {
     
     private let category: String
-    private let categoryView = MSCategoryView()
-    private let viewModel: MSCategoryViewModel
-   
+    private let viewModel = MSCategoryViewViewModel()
     
-    init(category: String, viewModel: MSCategoryViewModel) {
-        self.viewModel = viewModel
+    var categoryCallBack: ((String) -> Void)?
+    
+    init(category: String
+    ) {
         self.category = category
         super.init(nibName: nil, bundle: nil)
     }
@@ -24,26 +24,22 @@ final class MSCategoryViewController: UIViewController {
         fatalError("Unsupported")
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         setupView()
         title = category.replacingOccurrences(of: "-", with: " ", options: .literal, range: nil).capitalized
-        viewModel.fetchProducts()
-
-        
     }
     
     private func setupView() {
-           
+        let categoryView = MSCategoryView(frame: .zero, category: category)
         view.addSubview(categoryView)
-           NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([
             categoryView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             categoryView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             categoryView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             categoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-           ])
-           
-       }
-
+        ])
+    }
 }

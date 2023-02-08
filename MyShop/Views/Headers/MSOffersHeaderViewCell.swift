@@ -8,7 +8,7 @@
 import UIKit
 
 final class MSOffersHeaderViewCell: UICollectionViewCell {
-        static let identifier = "MSCatalogCollectionReusableView"
+    static let identifier = "MSCatalogCollectionReusableView"
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()

@@ -67,5 +67,4 @@ final class MSCategoriesCollectionViewCell: UICollectionViewCell {
             self.imageView.image = categoryPic
         }
     }
-    
 }

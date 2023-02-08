@@ -13,7 +13,6 @@ final class MSCatalogView: UIView {
     
     private let viewModel: MSCatalogViewModel
     
-    
     init(frame: CGRect, viewModel: MSCatalogViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
@@ -22,7 +21,6 @@ final class MSCatalogView: UIView {
         self.collectionView = collectionView
         addSubviews(collectionView)
         addConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -46,11 +44,11 @@ final class MSCatalogView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(MSOffersHeaderViewCell.self, forCellWithReuseIdentifier:MSOffersHeaderViewCell.identifier)
-       
+        
         collectionView.register(MSPromoCollectionViewCell.self, forCellWithReuseIdentifier:MSPromoCollectionViewCell.identifier)
         collectionView.register(MSCatalogHeaderViewCell.self, forCellWithReuseIdentifier:MSCatalogHeaderViewCell.identifier)
         collectionView.register(MSCategoriesCollectionViewCell.self, forCellWithReuseIdentifier: MSCategoriesCollectionViewCell.identifier)
-       
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }

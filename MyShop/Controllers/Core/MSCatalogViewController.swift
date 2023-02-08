@@ -31,8 +31,6 @@ final class MSCatalogViewController: UIViewController {
         setupLayout()
         catalogView.collectionView?.delegate = self
         catalogView.collectionView?.dataSource = self
-
-        
     }
     
     private func setupLayout() {
@@ -69,12 +67,12 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 3 {
-            let categoryVC = MSCategoryViewController(category: catergory[indexPath.row], viewModel: MSCategoryViewModel(category: catergory[indexPath.row]))
-        navigationController?.pushViewController(categoryVC, animated: true)
+            let categoryVC = MSCategoryViewController(category: catergory[indexPath.row])
+            navigationController?.pushViewController(categoryVC, animated: true)
         }
     }
     
-  
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,15 +92,15 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         case .categories:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCategoriesCollectionViewCell.identifier, for: indexPath) as? MSCategoriesCollectionViewCell else { fatalError() }
-                    MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
-                               switch result {
-                               case .success(let sucssess):
-                                   self?.catergory = sucssess
-                                   cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
-                               case .failure(let error):
-                                   print(error)
-                               }
-                    })
+            MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
+                switch result {
+                case .success(let sucssess):
+                    self?.catergory = sucssess
+                    cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
+                case .failure(let error):
+                    print(error)
+                }
+            })
             return cell
         }
     }

@@ -17,7 +17,9 @@
 		A573FEAB298C0089003488C0 /* MSCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FEAA298C0089003488C0 /* MSCategoriesCollectionViewCell.swift */; };
 		A573FEAD298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FEAC298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift */; };
 		A573FEAF298C2B79003488C0 /* CategoryPics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FEAE298C2B79003488C0 /* CategoryPics.swift */; };
-		A590AA582992FF1F00212C88 /* MSCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590AA572992FF1F00212C88 /* MSCategoryViewModel.swift */; };
+		A590AA582992FF1F00212C88 /* MSCategoryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590AA572992FF1F00212C88 /* MSCategoryViewViewModel.swift */; };
+		A590AA5A2993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590AA592993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift */; };
+		A590AA5C2993CF0300212C88 /* MsProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590AA5B2993CF0300212C88 /* MsProductsCollectionViewCell.swift */; };
 		A59B64E129917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B64E029917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift */; };
 		A59B64E329917F9400B1A2B5 /* MSCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B64E229917F9400B1A2B5 /* MSCategoryView.swift */; };
 		A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745F729880CDE00C3F081 /* AppDelegate.swift */; };
@@ -44,7 +46,9 @@
 		A573FEAA298C0089003488C0 /* MSCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		A573FEAC298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoriesCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		A573FEAE298C2B79003488C0 /* CategoryPics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPics.swift; sourceTree = "<group>"; };
-		A590AA572992FF1F00212C88 /* MSCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryViewModel.swift; sourceTree = "<group>"; };
+		A590AA572992FF1F00212C88 /* MSCategoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryViewViewModel.swift; sourceTree = "<group>"; };
+		A590AA592993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		A590AA5B2993CF0300212C88 /* MsProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A59B64E029917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCatalogHeaderViewCell.swift; sourceTree = "<group>"; };
 		A59B64E229917F9400B1A2B5 /* MSCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryView.swift; sourceTree = "<group>"; };
 		A5D745F429880CDE00C3F081 /* MyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +142,7 @@
 				A573FEA4298BED5D003488C0 /* MSPromoCollectionViewCell.swift */,
 				A573FEAA298C0089003488C0 /* MSCategoriesCollectionViewCell.swift */,
 				A59B64E229917F9400B1A2B5 /* MSCategoryView.swift */,
+				A590AA5B2993CF0300212C88 /* MsProductsCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,7 +152,8 @@
 			children = (
 				A573FEA0298BDF1A003488C0 /* MSCatalogViewModel.swift */,
 				A573FEAC298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift */,
-				A590AA572992FF1F00212C88 /* MSCategoryViewModel.swift */,
+				A590AA572992FF1F00212C88 /* MSCategoryViewViewModel.swift */,
+				A590AA592993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -279,15 +285,17 @@
 				A5D746162988126A00C3F081 /* MSCartViewController.swift in Sources */,
 				A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */,
 				A5D746142988121E00C3F081 /* MSCatalogViewController.swift in Sources */,
+				A590AA5C2993CF0300212C88 /* MsProductsCollectionViewCell.swift in Sources */,
 				A573FEA7298BF2E2003488C0 /* PromoPics.swift in Sources */,
 				A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */,
 				A573FEA1298BDF1A003488C0 /* MSCatalogViewModel.swift in Sources */,
+				A590AA5A2993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift in Sources */,
 				A573FEA3298BDFCB003488C0 /* Extensions.swift in Sources */,
 				A5D7461E29881CD100C3F081 /* MSRequest.swift in Sources */,
 				A573FEAF298C2B79003488C0 /* CategoryPics.swift in Sources */,
 				A5D745FA29880CDE00C3F081 /* SceneDelegate.swift in Sources */,
 				A59B64E129917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift in Sources */,
-				A590AA582992FF1F00212C88 /* MSCategoryViewModel.swift in Sources */,
+				A590AA582992FF1F00212C88 /* MSCategoryViewViewModel.swift in Sources */,
 				A59B64E329917F9400B1A2B5 /* MSCategoryView.swift in Sources */,
 				A573FEAB298C0089003488C0 /* MSCategoriesCollectionViewCell.swift in Sources */,
 				A573FE9F298BDEF0003488C0 /* MSCatalogView.swift in Sources */,
