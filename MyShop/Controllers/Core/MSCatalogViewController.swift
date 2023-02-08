@@ -15,6 +15,13 @@ final class MSCatalogViewController: UIViewController {
     private let viewModel = MSCatalogViewModel()
     private let catalogView: MSCatalogView
     
+    private let spinner: UIActivityIndicatorView = {
+           let spinner = UIActivityIndicatorView(style: .large)
+           spinner.hidesWhenStopped = true
+           spinner.translatesAutoresizingMaskIntoConstraints = false
+           return spinner
+       }()
+    
     init() {
         self.catalogView = MSCatalogView(frame: .zero, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
@@ -27,19 +34,32 @@ final class MSCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My shop"
-        view.addSubview(catalogView)
+        view.addSubviews(catalogView, spinner)
         setupLayout()
+        startLoading()
+        
         catalogView.collectionView?.delegate = self
         catalogView.collectionView?.dataSource = self
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
+            spinner.widthAnchor.constraint(equalToConstant: 100),
+            spinner.heightAnchor.constraint(equalToConstant: 100),
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             catalogView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             catalogView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             catalogView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             catalogView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func startLoading() {
+        catalogView.collectionView?.isHidden = true
+        catalogView.collectionView?.alpha = 0
+        spinner.startAnimating()
     }
 }
 
@@ -68,11 +88,11 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 3 {
             let categoryVC = MSCategoryViewController(category: catergory[indexPath.row])
-            navigationController?.pushViewController(categoryVC, animated: true)
+        navigationController?.pushViewController(categoryVC, animated: true)
         }
     }
     
-    
+  
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,15 +112,23 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         case .categories:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCategoriesCollectionViewCell.identifier, for: indexPath) as? MSCategoriesCollectionViewCell else { fatalError() }
-            MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
-                switch result {
-                case .success(let sucssess):
-                    self?.catergory = sucssess
-                    cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
-                case .failure(let error):
-                    print(error)
-                }
-            })
+                    MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
+                               switch result {
+                               case .success(let sucssess):
+                                   self?.catergory = sucssess
+                                   DispatchQueue.main.async {
+                                       cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
+                                       self?.spinner.stopAnimating()
+                                       self?.catalogView.collectionView?.isHidden = false
+                                       UIView.animate(withDuration: 0.4) {
+                                           self?.catalogView.collectionView?.alpha = 1
+                                       }
+                                   }
+                                   
+                               case .failure(let error):
+                                   print(error)
+                               }
+                    })
             return cell
         }
     }
