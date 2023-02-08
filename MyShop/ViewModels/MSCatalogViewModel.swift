@@ -69,7 +69,7 @@ final class MSCatalogViewModel {
             leading: 5,
             bottom: 10,
             trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(
+        let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.8),
                 heightDimension: .absolute(150)),
@@ -92,7 +92,7 @@ final class MSCatalogViewModel {
             leading: 15,
             bottom: 10,
             trailing: 0)
-        let group = NSCollectionLayoutGroup.horizontal(
+        let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(60)),

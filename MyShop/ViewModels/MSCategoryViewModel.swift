@@ -27,7 +27,7 @@ final class MSCategoryViewModel {
         MSService.shared.execute(MSRequest(urlPath: "/category/"+category), expecting: MSGetAllProdactInfo.self) { [weak self] result in
             switch result {
             case .success(let response):
-                print(response)
+                print(response.products)
                 
             case .failure(let error):
                 print(String(describing: error))
