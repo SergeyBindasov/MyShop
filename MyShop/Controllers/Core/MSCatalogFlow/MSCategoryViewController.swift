@@ -34,6 +34,7 @@ final class MSCategoryViewController: UIViewController {
     
     private func setupView() {
         let categoryView = MSCategoryView(frame: .zero, category: category)
+        categoryView.delegate = self
         view.addSubview(categoryView)
         NSLayoutConstraint.activate([
             categoryView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -42,4 +43,12 @@ final class MSCategoryViewController: UIViewController {
             categoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+}
+
+extension MSCategoryViewController: MSCategoryViewDelegate {
+    func showSelectedProduct(_ msCategoreView: MSCategoryView, didSelectProduct product: MSProduct) {
+        print("Selected \(product.title)")
+    }
+    
+    
 }

@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MSCategoryViewDelegate: AnyObject {
+    func showSelectedProduct(_ msCategoreView: MSCategoryView, didSelectProduct product: MSProduct)
+}
+
 final class MSCategoryView: UIView {
+    
+    public weak var delegate: MSCategoryViewDelegate?
     
     private let category: String
     
@@ -77,5 +83,8 @@ extension MSCategoryView: MSCategoryViewViewModelDelegate {
         UIView.animate(withDuration: 0.6) {
             self.collectionView.alpha = 1
         }
+    }
+    func didSelectProduct(_ product: MSProduct) {
+        delegate?.showSelectedProduct(self, didSelectProduct: product)
     }
 }

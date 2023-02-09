@@ -9,6 +9,7 @@ import UIKit
 
 protocol MSCategoryViewViewModelDelegate: AnyObject {
     func didLoadCategoryProducts()
+    func didSelectProduct(_ product: MSProduct)
 }
 
 final class MSCategoryViewViewModel: NSObject {
@@ -69,6 +70,7 @@ extension MSCategoryViewViewModel: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        let product = products[indexPath.row]
+        delegate?.didSelectProduct(product)
     }
 }
