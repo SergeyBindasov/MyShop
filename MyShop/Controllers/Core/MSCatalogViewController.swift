@@ -77,11 +77,11 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         case .firstHeader:
             return 1
         case .promo:
-            return AssetPics.promo.count
+            return AssetPicsStrings.promo.count
         case .secondHeader:
             return 1
         case .categories:
-            return AssetPics.category.count
+            return AssetPicsStrings.category.count
         }
     }
     
@@ -104,7 +104,7 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         case .promo:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSPromoCollectionViewCell.identifier, for: indexPath) as? MSPromoCollectionViewCell else { fatalError() }
-            cell.configure(with: AssetPics.promo[indexPath.row]!)
+            cell.configure(with: UIImage.getImagesByNames(names: AssetPicsStrings.promo)[indexPath.row])
             return cell
         case .secondHeader:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCatalogHeaderViewCell.identifier, for: indexPath) as? MSCatalogHeaderViewCell else { fatalError() }
@@ -117,7 +117,7 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
                                case .success(let sucssess):
                                    self?.catergory = sucssess
                                    DispatchQueue.main.async {
-                                       cell.configure(with: sucssess[indexPath.row], categoryPic: AssetPics.category[indexPath.row]!)
+                                       cell.configure(with: sucssess[indexPath.row], categoryPic: UIImage.getImagesByNames(names: AssetPicsStrings.category)[indexPath.row])
                                        self?.spinner.stopAnimating()
                                        self?.catalogView.collectionView?.isHidden = false
                                        UIView.animate(withDuration: 0.4) {

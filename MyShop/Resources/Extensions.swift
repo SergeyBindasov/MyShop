@@ -36,4 +36,11 @@ extension UIImageView {
     }
 }
 
+extension UIImage {
+
+static func getImagesByNames(names: [String]) -> [UIImage] {
+    return names.compactMap { Self(named: $0) }
+}
+} 
+
 

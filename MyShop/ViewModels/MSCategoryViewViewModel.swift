@@ -67,4 +67,8 @@ extension MSCategoryViewViewModel: UICollectionViewDataSource, UICollectionViewD
         let hight: CGFloat = 300
         return CGSize(width: width, height: hight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //
+    }
 }
