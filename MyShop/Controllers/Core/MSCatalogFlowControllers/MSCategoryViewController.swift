@@ -47,7 +47,8 @@ final class MSCategoryViewController: UIViewController {
 
 extension MSCategoryViewController: MSCategoryViewDelegate {
     func showSelectedProduct(_ msCategoreView: MSCategoryView, didSelectProduct product: MSProduct) {
-        print("Selected \(product.title)")
+        let productDetilVC = MSProductDetailViewController(product: product)
+        navigationController?.pushViewController(productDetilVC, animated: true)
     }
     
     
