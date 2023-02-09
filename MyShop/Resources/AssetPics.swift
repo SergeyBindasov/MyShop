@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct CategoryPics {
-    static let all = [
+struct AssetPics {
+    static let category = [
     UIImage(named: "phone"),
     UIImage(named: "laptop"),
     UIImage(named: "perfume"),
@@ -30,4 +30,13 @@ struct CategoryPics {
     UIImage(named: "bike"),
     UIImage(named: "lamp")
     ]
+    static let promo = [
+        UIImage(named: "apple"),
+        UIImage(named: "coffee"),
+        UIImage(named: "oled"),
+        UIImage(named: "watch"),
+        UIImage(named: "sony")
+    ]
+    
 }
+

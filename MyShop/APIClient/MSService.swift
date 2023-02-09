@@ -44,24 +44,24 @@ final class MSService {
             task.resume()
         }
     
-    public func makeCategoryRequest(with request: MSRequest, complition: @escaping (Result<[String],Error>) -> Void) {
+    public func makeCategoryRequest(with request: MSRequest, completion: @escaping (Result<[String],Error>) -> Void) {
         guard let urlRequest = self.request(from: request) else  {
-        complition(.failure(MSServiceError.failedToCreateRequest))
+        completion(.failure(MSServiceError.failedToCreateRequest))
         return
     }
     let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
         guard let data = data, error == nil else  {
-            complition(.failure(error ?? MSServiceError.failedToGetData))
+            completion(.failure(error ?? MSServiceError.failedToGetData))
             return
         }
         //Decode response
         do {
             let result = try JSONDecoder().decode([String].self, from: data)
-            complition(.success(result))
+            completion(.success(result))
             
         }
         catch {
-            complition(.failure(error))
+            completion(.failure(error))
         }
     }
     task.resume()

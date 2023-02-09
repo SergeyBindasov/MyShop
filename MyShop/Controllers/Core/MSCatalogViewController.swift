@@ -77,11 +77,11 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
         case .firstHeader:
             return 1
         case .promo:
-            return PromoPics.all.count
+            return AssetPics.promo.count
         case .secondHeader:
             return 1
         case .categories:
-            return CategoryPics.all.count
+            return AssetPics.category.count
         }
     }
     
@@ -104,7 +104,7 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         case .promo:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSPromoCollectionViewCell.identifier, for: indexPath) as? MSPromoCollectionViewCell else { fatalError() }
-            cell.configure(with: PromoPics.all[indexPath.row]!)
+            cell.configure(with: AssetPics.promo[indexPath.row]!)
             return cell
         case .secondHeader:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCatalogHeaderViewCell.identifier, for: indexPath) as? MSCatalogHeaderViewCell else { fatalError() }
@@ -112,12 +112,12 @@ extension MSCatalogViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         case .categories:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSCategoriesCollectionViewCell.identifier, for: indexPath) as? MSCategoriesCollectionViewCell else { fatalError() }
-                    MSService.shared.makeCategoryRequest(with: request, complition: { [weak self] result in
+                    MSService.shared.makeCategoryRequest(with: request, completion: { [weak self] result in
                                switch result {
                                case .success(let sucssess):
                                    self?.catergory = sucssess
                                    DispatchQueue.main.async {
-                                       cell.configure(with: sucssess[indexPath.row], categoryPic: CategoryPics.all[indexPath.row]!)
+                                       cell.configure(with: sucssess[indexPath.row], categoryPic: AssetPics.category[indexPath.row]!)
                                        self?.spinner.stopAnimating()
                                        self?.catalogView.collectionView?.isHidden = false
                                        UIView.animate(withDuration: 0.4) {
