@@ -139,6 +139,7 @@ final class MSProductInfoCollectionViewCell: UICollectionViewCell {
             
             brandLabel.topAnchor.constraint(equalTo: brandImageView.bottomAnchor, constant: 5),
             brandLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            brandLabel.rightAnchor.constraint(equalTo: ratingLabel.leftAnchor, constant: 5),
             
             ratingLabel.centerYAnchor.constraint(equalTo: brandLabel.centerYAnchor),
             ratingLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),

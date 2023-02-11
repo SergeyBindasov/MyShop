@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol MSProductDetailsViewDelegate: AnyObject {
+    func didTaptoAddtoCartButton(_ msProductDetailsView: MSProductDetailsView, didSelectProduct product: MSProduct)
+    func didTaptoAddtoLikeButton(_ msProductDetailsView: MSProductDetailsView, didSelectProduct product: MSProduct)
+}
+
 final class MSProductDetailsView: UIView {
+    
+    public weak var delegate: MSProductDetailsViewDelegate?
     
     public var collectionView: UICollectionView?
     
@@ -24,6 +31,7 @@ final class MSProductDetailsView: UIView {
         button.backgroundColor = .systemTeal
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(addToCartButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -31,12 +39,13 @@ final class MSProductDetailsView: UIView {
         let like = UIButton()
         like.translatesAutoresizingMaskIntoConstraints = false
         like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-        like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
+        //like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.backgroundColor = .secondarySystemBackground
         like.tintColor = .systemRed
         like.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
         like.layer.cornerRadius = 10
         like.layer.masksToBounds = true
+        like.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         return like
     }()
 
@@ -57,6 +66,17 @@ final class MSProductDetailsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("unsupported")
     }
+    
+    @objc func addToCartButtonPressed() {
+        delegate?.didTaptoAddtoCartButton(self, didSelectProduct: product)
+    }
+    
+    @objc func likeButtonPressed(_ sender: UIButton) {
+        sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+        delegate?.didTaptoAddtoLikeButton(self, didSelectProduct: product)
+    }
+    
+    
     
     private func addConstraints() {
         guard let collectionView = collectionView else { return }
