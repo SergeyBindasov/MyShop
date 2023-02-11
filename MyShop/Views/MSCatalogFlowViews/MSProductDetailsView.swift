@@ -83,6 +83,7 @@ final class MSProductDetailsView: UIView {
        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell1")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        layout.register(SectionBackgroundDecorationView.self, forDecorationViewOfKind: "background")
         return collectionView
     }
     

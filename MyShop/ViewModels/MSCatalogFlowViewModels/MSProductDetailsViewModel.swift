@@ -30,6 +30,9 @@ final class MSProductDetailsViewModel: NSObject {
     
     public func createGallerySectionLayout() -> NSCollectionLayoutSection {
         
+        let sectionBackground = NSCollectionLayoutDecorationItem.background(
+                            elementKind: "background")
+        
         let item = NSCollectionLayoutItem(layoutSize:
                                             NSCollectionLayoutSize(
                                                 widthDimension: .fractionalWidth(1.0),
@@ -45,6 +48,8 @@ final class MSProductDetailsViewModel: NSObject {
                 heightDimension: .absolute(300)),
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.decorationItems = [sectionBackground]
+       
         section.orthogonalScrollingBehavior = .groupPaging
         return section
     }
@@ -60,6 +65,7 @@ final class MSProductDetailsViewModel: NSObject {
             leading: 15,
             bottom: 10,
             trailing: 15)
+
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
