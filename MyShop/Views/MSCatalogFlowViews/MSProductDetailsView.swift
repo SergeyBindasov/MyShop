@@ -84,7 +84,7 @@ final class MSProductDetailsView: UIView {
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MSProductGalleryCollectionViewCell.self, forCellWithReuseIdentifier: MSProductGalleryCollectionViewCell.identifier)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell1")
+        collectionView.register(MSProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: MSProductInfoCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         layout.register(SectionBackgroundDecorationView.self, forDecorationViewOfKind: "background")
         return collectionView

@@ -105,13 +105,12 @@ extension MSProductDetailsViewModel: UICollectionViewDelegate, UICollectionViewD
         case .productGallery:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductGalleryCollectionViewCell.identifier, for: indexPath) as? MSProductGalleryCollectionViewCell else { fatalError("unsupported cell")}
            UIImage.getImages(forURLs: product.images, completion: { images in
-               cell.configure(with: (images[indexPath.row] ))
+               cell.configure(with: (images[indexPath.row]))
             })
             return cell
             
         case .productInfo:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath)
-            cell.backgroundColor = .blue
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductInfoCollectionViewCell.identifier, for: indexPath) as? MSProductInfoCollectionViewCell else { fatalError("unsupported cell")}
             return cell
         }
     }

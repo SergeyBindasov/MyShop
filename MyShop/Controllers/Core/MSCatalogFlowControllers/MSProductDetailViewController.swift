@@ -10,7 +10,6 @@ import UIKit
 final class MSProductDetailViewController: UIViewController {
     
     private let product: MSProduct
-   // private let detailsView = MSProductDetailsView()
     
     init (product: MSProduct) {
         self.product = product
@@ -25,9 +24,7 @@ final class MSProductDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = product.title
-        //view.addSubviews(detailsView)
         setupView()
-        print(product.images)
     }
     
     private func setupView() {
@@ -42,16 +39,4 @@ final class MSProductDetailViewController: UIViewController {
             ])
     }
 }
-
-//extension MSProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//    
-//    
-//}
 
