@@ -64,6 +64,14 @@ static func getImagesByNames(names: [String]) -> [UIImage] {
             completion(images)
         }
     }
-} 
+}
+
+extension String {
+    static func getInitialPrice(with base: Int, with percent: Double) -> String {
+        //A2 = A1 + A1 * P / 100
+        let price = base + base * Int(percent) / 100
+        return String(price)
+    }
+}
 
 

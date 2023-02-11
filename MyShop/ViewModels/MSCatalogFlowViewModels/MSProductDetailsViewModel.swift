@@ -111,6 +111,7 @@ extension MSProductDetailsViewModel: UICollectionViewDelegate, UICollectionViewD
             
         case .productInfo:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductInfoCollectionViewCell.identifier, for: indexPath) as? MSProductInfoCollectionViewCell else { fatalError("unsupported cell")}
+            cell.configure(with: product)
             return cell
         }
     }
