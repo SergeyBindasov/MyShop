@@ -58,7 +58,7 @@ extension MSCategoryViewViewModel: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MsProductsCollectionViewCell.cellIdentifier, for: indexPath) as? MsProductsCollectionViewCell else { fatalError("unsupported cell")}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductsCollectionViewCell.cellIdentifier, for: indexPath) as? MSProductsCollectionViewCell else { fatalError("unsupported cell")}
         cell.configure(with: cellViewModel[indexPath.row])
         return cell
     }

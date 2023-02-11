@@ -10,7 +10,7 @@ import UIKit
 final class MSProductDetailViewController: UIViewController {
     
     private let product: MSProduct
-    private let detailsView = MSProductDetailsView()
+   // private let detailsView = MSProductDetailsView()
     
     init (product: MSProduct) {
         self.product = product
@@ -25,11 +25,14 @@ final class MSProductDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = product.title
-        view.addSubviews(detailsView)
+        //view.addSubviews(detailsView)
         setupView()
+        print(product.images)
     }
     
     private func setupView() {
+        let detailsView = MSProductDetailsView(frame: .zero, product: product)
+        view.addSubviews(detailsView)
         
         NSLayoutConstraint.activate([
                 detailsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

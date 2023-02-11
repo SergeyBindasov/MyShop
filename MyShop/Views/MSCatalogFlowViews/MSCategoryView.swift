@@ -31,7 +31,7 @@ final class MSCategoryView: UIView {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.register(MsProductsCollectionViewCell.self, forCellWithReuseIdentifier: MsProductsCollectionViewCell.cellIdentifier)
+        collection.register(MSProductsCollectionViewCell.self, forCellWithReuseIdentifier: MSProductsCollectionViewCell.cellIdentifier)
         collection.isHidden = true
         collection.alpha = 0
         return collection

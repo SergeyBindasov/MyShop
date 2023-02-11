@@ -9,6 +9,10 @@ import UIKit
 
 final class MSProductDetailsViewModel: NSObject {
     
+    var product: MSProduct
+    
+    var productImages: [UIImage] = []
+    
     enum SectionType {
         case productGallery
         case productInfo
@@ -16,7 +20,8 @@ final class MSProductDetailsViewModel: NSObject {
     
     public var sections: [SectionType] = []
     
-    override init() {
+    init(product: MSProduct) {
+        self.product = product
         super.init()
         setupSections()
     }
@@ -87,7 +92,7 @@ extension MSProductDetailsViewModel: UICollectionViewDelegate, UICollectionViewD
         let sectionType = sections[section]
         switch sectionType {
         case .productGallery:
-            return 6
+            return product.images.count
         case .productInfo:
             return 1
         }
@@ -98,8 +103,10 @@ extension MSProductDetailsViewModel: UICollectionViewDelegate, UICollectionViewD
         let sectionType = sections[indexPath.section]
         switch sectionType {
         case .productGallery:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = .red
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductGalleryCollectionViewCell.identifier, for: indexPath) as? MSProductGalleryCollectionViewCell else { fatalError("unsupported cell")}
+           UIImage.getImages(forURLs: product.images, completion: { images in
+               cell.configure(with: (images[indexPath.row] ))
+            })
             return cell
             
         case .productInfo:

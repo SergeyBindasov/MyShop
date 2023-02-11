@@ -41,6 +41,29 @@ extension UIImage {
 static func getImagesByNames(names: [String]) -> [UIImage] {
     return names.compactMap { Self(named: $0) }
 }
+    
+    static func getImages(forURLs urls: [String], completion: @escaping ([UIImage?]) -> Void) {
+        let group = DispatchGroup()
+        var images: [UIImage?] = .init(repeating: nil, count: urls.count)
+        
+        for (index, urlString) in urls.enumerated() {
+            group.enter()
+            DispatchQueue.global().async {
+                var image: UIImage?
+                if let url = URL(string: urlString) {
+                    if let data = try? Data(contentsOf: url) {
+                        image = UIImage(data: data)
+                    }
+                }
+                images[index] = image
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(images)
+        }
+    }
 } 
 
 

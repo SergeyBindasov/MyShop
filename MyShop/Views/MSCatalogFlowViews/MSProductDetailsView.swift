@@ -11,7 +11,9 @@ final class MSProductDetailsView: UIView {
     
     public var collectionView: UICollectionView?
     
-    private let viewModel = MSProductDetailsViewModel()
+    private let product: MSProduct
+    
+    private var viewModel: MSProductDetailsViewModel? = nil
     
     private lazy var addToCartButton: UIButton = {
         let button = UIButton()
@@ -38,11 +40,12 @@ final class MSProductDetailsView: UIView {
         return like
     }()
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, product: MSProduct) {
+        self.product = product
         super.init(frame: frame)
         backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
-        
+        viewModel = MSProductDetailsViewModel(product: product)
         let collectionView = createCollectionView()
         self.collectionView = collectionView
         setUpCollectionView()
@@ -80,7 +83,7 @@ final class MSProductDetailsView: UIView {
             return self.createSection(for: sectionIndex)
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MSProductGalleryCollectionViewCell.self, forCellWithReuseIdentifier: MSProductGalleryCollectionViewCell.identifier)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell1")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         layout.register(SectionBackgroundDecorationView.self, forDecorationViewOfKind: "background")
@@ -88,6 +91,8 @@ final class MSProductDetailsView: UIView {
     }
     
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
+        guard let viewModel = viewModel else { fatalError("unsupported")}
+       
         let sectionType = viewModel.sections
         switch sectionType[sectionIndex] {
         case .productGallery:
@@ -95,9 +100,11 @@ final class MSProductDetailsView: UIView {
         case .productInfo:
             return viewModel.createInfoSectionLayout()
         }
+        
     }
     
     private func setUpCollectionView() {
+        guard let viewModel = viewModel else { fatalError("unsupported")}
         collectionView?.delegate = viewModel
         collectionView?.dataSource = viewModel
     }

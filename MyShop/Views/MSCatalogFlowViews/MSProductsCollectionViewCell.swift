@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MsProductsCollectionViewCell: UICollectionViewCell {
+final class MSProductsCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "MsProductsCollectionViewCell"
     
     private let imageView: UIImageView = {
