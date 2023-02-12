@@ -38,8 +38,20 @@ final class MSCatalogViewController: UIViewController {
         setupLayout()
         startLoading()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .search,
+                  target: self,
+                  action: #selector(didTapSearch))
+    
+        
         catalogView.collectionView?.delegate = self
         catalogView.collectionView?.dataSource = self
+    }
+
+@objc private func didTapSearch() {
+        let msSearchVc = MSSearchTableViewController()
+    navigationController?.pushViewController(msSearchVc, animated: true)
+    print("Поиск")
     }
     
     private func setupLayout() {

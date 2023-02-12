@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */; };
+		A5173FD5299965D000430E68 /* MSSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */; };
 		A52DB359299518F700530DE3 /* MSProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */; };
 		A52DB35D29951C4D00530DE3 /* MSProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */; };
 		A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSOffersHeaderViewCell.swift; sourceTree = "<group>"; };
+		A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewController.swift; sourceTree = "<group>"; };
 		A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailViewController.swift; sourceTree = "<group>"; };
 		A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsView.swift; sourceTree = "<group>"; };
 		A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				A55E4FFF298D46860050CBD6 /* MSCatalogFlowControllers */,
 				A5D746152988126A00C3F081 /* MSCartViewController.swift */,
 				A5D746172988128B00C3F081 /* MSProfileViewController.swift */,
+				A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				A5D745FA29880CDE00C3F081 /* SceneDelegate.swift in Sources */,
 				A567EAC82997CE41005945A7 /* MSProductInfoCollectionViewCell.swift in Sources */,
 				A59B64E129917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift in Sources */,
+				A5173FD5299965D000430E68 /* MSSearchTableViewController.swift in Sources */,
 				A52DB35D29951C4D00530DE3 /* MSProductDetailsView.swift in Sources */,
 				A52DB359299518F700530DE3 /* MSProductDetailViewController.swift in Sources */,
 				A590AA582992FF1F00212C88 /* MSCategoryViewViewModel.swift in Sources */,
