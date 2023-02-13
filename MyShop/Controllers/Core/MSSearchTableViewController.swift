@@ -14,9 +14,15 @@ final class MSSearchTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
+        setupTableView()
         setupTableViewBackgroundView()
         setupSearchBar()
+    }
+    
+    private func setupTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = 80
+        tableView.register(MSSearchTableViewCell.self, forCellReuseIdentifier: MSSearchTableViewCell.identifier)
     }
     
     private func setupTableViewBackgroundView() {
@@ -27,7 +33,7 @@ final class MSSearchTableViewController: UITableViewController {
         backgroundViewLabel.textAlignment = NSTextAlignment.center
         backgroundViewLabel.font.withSize(20)
         tableView.backgroundView = backgroundViewLabel
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
     }
     
     private func setupSearchBar() {
@@ -51,8 +57,8 @@ final class MSSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemBackground
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MSSearchTableViewCell.identifier, for: indexPath) as? MSSearchTableViewCell else { fatalError() }
+        cell.backgroundColor = .secondarySystemBackground
         return cell
     }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */; };
 		A5173FD5299965D000430E68 /* MSSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */; };
+		A5173FD72999702F00430E68 /* MSSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */; };
 		A52DB359299518F700530DE3 /* MSProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */; };
 		A52DB35D29951C4D00530DE3 /* MSProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */; };
 		A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSOffersHeaderViewCell.swift; sourceTree = "<group>"; };
 		A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewController.swift; sourceTree = "<group>"; };
+		A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewCell.swift; sourceTree = "<group>"; };
 		A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailViewController.swift; sourceTree = "<group>"; };
 		A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsView.swift; sourceTree = "<group>"; };
 		A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */,
 				A567EAC32997B765005945A7 /* MSProductGalleryCollectionViewCell.swift */,
 				A567EAC72997CE41005945A7 /* MSProductInfoCollectionViewCell.swift */,
+				A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */,
 			);
 			path = MSCatalogFlowViews;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				A590AA5C2993CF0300212C88 /* MSProductsCollectionViewCell.swift in Sources */,
 				A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */,
 				A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */,
+				A5173FD72999702F00430E68 /* MSSearchTableViewCell.swift in Sources */,
 				A573FEA1298BDF1A003488C0 /* MSCatalogViewModel.swift in Sources */,
 				A590AA5A2993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift in Sources */,
 				A573FEA3298BDFCB003488C0 /* Extensions.swift in Sources */,
