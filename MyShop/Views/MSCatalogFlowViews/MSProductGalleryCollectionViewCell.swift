@@ -43,10 +43,18 @@ final class MSProductGalleryCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    public func configure(with image: UIImage?) {
-        if let image = image {
-            DispatchQueue.main.async {
-                self.imageView.image = image
+    public func configure(with imageString: String) {
+        let viewModel = MSImageForCellViewModel(productImageUrlString: imageString)
+       viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.imageView.image = image
+                }
+            case .failure(let error):
+                print(String(describing: error))
+                break
             }
         }
     }

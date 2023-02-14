@@ -51,7 +51,7 @@ final class MSSearchTableViewCell: UITableViewCell {
     }
     
     public func configure(with product: MSProduct) {
-        let viewModel = MSSearchTableViewCellViewModel(productImageUrlString: product.thumbnail)
+        let viewModel = MSImageForCellViewModel(productImageUrlString: product.thumbnail)
         nameLabel.text = product.title
         priceLabel.text = "\(String(product.price))" + " " + "$"
         viewModel.fetchImage { [weak self] result in

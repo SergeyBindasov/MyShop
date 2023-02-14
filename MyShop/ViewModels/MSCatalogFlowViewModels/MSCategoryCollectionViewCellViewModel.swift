@@ -30,11 +30,10 @@ final class MSCategoryCollectionViewCellViewModel {
     }
     
     public func fetchImage(complition: @escaping(Result<Data, Error>) -> Void) {
-            
-            guard let url = URL(string: thumbnail) else {
-                complition(.failure(URLError(.badURL)))
-                return
-            }
-            MSImageLoader.shared.downloadImage(url, complition: complition)
+        guard let url = URL(string: thumbnail) else {
+            complition(.failure(URLError(.badURL)))
+            return
         }
+        MSImageLoader.shared.downloadImage(url, complition: complition)
+    }
 }

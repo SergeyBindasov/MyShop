@@ -104,9 +104,7 @@ extension MSProductDetailsViewModel: UICollectionViewDelegate, UICollectionViewD
         switch sectionType {
         case .productGallery:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MSProductGalleryCollectionViewCell.identifier, for: indexPath) as? MSProductGalleryCollectionViewCell else { fatalError("unsupported cell")}
-           UIImage.getImages(forURLs: product.images, completion: { images in
-               cell.configure(with: (images[indexPath.row]))
-            })
+            cell.configure(with: product.images[indexPath.row])
             return cell
             
         case .productInfo:

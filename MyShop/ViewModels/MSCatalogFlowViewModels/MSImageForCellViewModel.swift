@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MSSearchTableViewCellViewModel {
+final class MSImageForCellViewModel {
     
     private let productImageUrlString: String?
     
