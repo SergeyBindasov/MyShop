@@ -25,6 +25,5 @@ final class MSSearchTableViewCellViewModel {
                 return
             }
             MSImageLoader.shared.downloadImage(url, complition: complition)
-
         }
 }

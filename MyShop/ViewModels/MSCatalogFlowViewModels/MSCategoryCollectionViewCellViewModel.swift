@@ -29,5 +29,12 @@ final class MSCategoryCollectionViewCellViewModel {
         self.thumbnail = thumbnail
     }
     
-    
+    public func fetchImage(complition: @escaping(Result<Data, Error>) -> Void) {
+            
+            guard let url = URL(string: thumbnail) else {
+                complition(.failure(URLError(.badURL)))
+                return
+            }
+            MSImageLoader.shared.downloadImage(url, complition: complition)
+        }
 }

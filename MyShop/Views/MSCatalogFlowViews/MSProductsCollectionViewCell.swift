@@ -85,7 +85,18 @@ final class MSProductsCollectionViewCell: UICollectionViewCell {
         brandLabel.text = viewModel.brand
         priceLabel.text = String(viewModel.price) + " " + "$"
         discountLabel.text = String(Int(viewModel.discountPercentage)) + " " + "%"
-        imageView.downloaded(from: viewModel.thumbnail)
+        viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.imageView.image = image
+                }
+            case .failure(let error):
+                print(String(describing: error))
+                break
+            }
+        }
     }
     
     private func setupConstraints() {
