@@ -52,7 +52,7 @@ final class MSProductDetailsView: UIView {
     init(frame: CGRect, product: MSProduct) {
         self.product = product
         super.init(frame: frame)
-        backgroundColor = .systemPink
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
         viewModel = MSProductDetailsViewModel(product: product)
         let collectionView = createCollectionView()
@@ -125,8 +125,16 @@ final class MSProductDetailsView: UIView {
     
     private func setUpCollectionView() {
         guard let viewModel = viewModel else { fatalError("unsupported")}
+        collectionView?.alpha = 0
+        collectionView?.isHidden = true
         collectionView?.delegate = viewModel
         collectionView?.dataSource = viewModel
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            UIView.animate(withDuration: 0.4) {
+                self.collectionView?.isHidden = false
+                self.collectionView?.alpha = 1
+            }
+        }
     }
 
 

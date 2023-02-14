@@ -15,26 +15,26 @@ extension UIView {
     }
 }
 
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
-}
+//extension UIImageView {
+//    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+//        contentMode = mode
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            guard
+//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                let data = data, error == nil,
+//                let image = UIImage(data: data)
+//                else { return }
+//            DispatchQueue.main.async() { [weak self] in
+//                self?.image = image
+//            }
+//        }.resume()
+//    }
+//    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+//        guard let url = URL(string: link) else { return }
+//        downloaded(from: url, contentMode: mode)
+//    }
+//}
 
 extension UIImage {
 
@@ -42,28 +42,28 @@ static func getImagesByNames(names: [String]) -> [UIImage] {
     return names.compactMap { Self(named: $0) }
 }
     
-    static func getImages(forURLs urls: [String], completion: @escaping ([UIImage?]) -> Void) {
-        let group = DispatchGroup()
-        var images: [UIImage?] = .init(repeating: nil, count: urls.count)
-        
-        for (index, urlString) in urls.enumerated() {
-            group.enter()
-            DispatchQueue.global().async {
-                var image: UIImage?
-                if let url = URL(string: urlString) {
-                    if let data = try? Data(contentsOf: url) {
-                        image = UIImage(data: data)
-                    }
-                }
-                images[index] = image
-                group.leave()
-            }
-        }
-        
-        group.notify(queue: .main) {
-            completion(images)
-        }
-    }
+//    static func getImages(forURLs urls: [String], completion: @escaping ([UIImage?]) -> Void) {
+//        let group = DispatchGroup()
+//        var images: [UIImage?] = .init(repeating: nil, count: urls.count)
+//        
+//        for (index, urlString) in urls.enumerated() {
+//            group.enter()
+//            DispatchQueue.global().async {
+//                var image: UIImage?
+//                if let url = URL(string: urlString) {
+//                    if let data = try? Data(contentsOf: url) {
+//                        image = UIImage(data: data)
+//                    }
+//                }
+//                images[index] = image
+//                group.leave()
+//            }
+//        }
+//        
+//        group.notify(queue: .main) {
+//            completion(images)
+//        }
+//    }
 }
 
 extension String {
