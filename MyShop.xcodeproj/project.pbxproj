@@ -136,6 +136,7 @@
 				A5D746132988121E00C3F081 /* MSCatalogViewController.swift */,
 				A55E5000298D46C80050CBD6 /* MSCategoryViewController.swift */,
 				A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */,
+				A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */,
 			);
 			path = MSCatalogFlowControllers;
 			sourceTree = "<group>";
@@ -239,7 +240,6 @@
 				A55E4FFF298D46860050CBD6 /* MSCatalogFlowControllers */,
 				A5D746152988126A00C3F081 /* MSCartViewController.swift */,
 				A5D746172988128B00C3F081 /* MSProfileViewController.swift */,
-				A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
