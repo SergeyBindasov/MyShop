@@ -13,6 +13,8 @@
 		A52DB359299518F700530DE3 /* MSProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */; };
 		A52DB35D29951C4D00530DE3 /* MSProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */; };
 		A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */; };
+		A5466D23299BC3CB00E3152E /* MSImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5466D22299BC3CB00E3152E /* MSImageLoader.swift */; };
+		A5466D25299BC7BE00E3152E /* MSSearchTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5466D24299BC7BE00E3152E /* MSSearchTableViewCellViewModel.swift */; };
 		A55E5001298D46C90050CBD6 /* MSCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E5000298D46C80050CBD6 /* MSCategoryViewController.swift */; };
 		A567EAC22997B3D4005945A7 /* MSSectionBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567EAC12997B3D4005945A7 /* MSSectionBackground.swift */; };
 		A567EAC42997B765005945A7 /* MSProductGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567EAC32997B765005945A7 /* MSProductGalleryCollectionViewCell.swift */; };
@@ -49,6 +51,8 @@
 		A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailViewController.swift; sourceTree = "<group>"; };
 		A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsView.swift; sourceTree = "<group>"; };
 		A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsViewModel.swift; sourceTree = "<group>"; };
+		A5466D22299BC3CB00E3152E /* MSImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSImageLoader.swift; sourceTree = "<group>"; };
+		A5466D24299BC7BE00E3152E /* MSSearchTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		A55E5000298D46C80050CBD6 /* MSCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryViewController.swift; sourceTree = "<group>"; };
 		A567EAC12997B3D4005945A7 /* MSSectionBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSectionBackground.swift; sourceTree = "<group>"; };
 		A567EAC32997B765005945A7 /* MSProductGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				A590AA572992FF1F00212C88 /* MSCategoryViewViewModel.swift */,
 				A590AA592993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift */,
 				A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */,
+				A5466D24299BC7BE00E3152E /* MSSearchTableViewCellViewModel.swift */,
 			);
 			path = MSCatalogFlowViewModels;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 		A5D746102988108400C3F081 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				A5466D22299BC3CB00E3152E /* MSImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -317,11 +323,13 @@
 				A573FEA5298BED5D003488C0 /* MSPromoCollectionViewCell.swift in Sources */,
 				A573FEAD298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift in Sources */,
 				A5D745FC29880CDE00C3F081 /* MSTabBarViewController.swift in Sources */,
+				A5466D25299BC7BE00E3152E /* MSSearchTableViewCellViewModel.swift in Sources */,
 				A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */,
 				A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */,
 				A5D746162988126A00C3F081 /* MSCartViewController.swift in Sources */,
 				A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */,
 				A5D746142988121E00C3F081 /* MSCatalogViewController.swift in Sources */,
+				A5466D23299BC3CB00E3152E /* MSImageLoader.swift in Sources */,
 				A590AA5C2993CF0300212C88 /* MSProductsCollectionViewCell.swift in Sources */,
 				A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */,
 				A5D746182988128B00C3F081 /* MSProfileViewController.swift in Sources */,

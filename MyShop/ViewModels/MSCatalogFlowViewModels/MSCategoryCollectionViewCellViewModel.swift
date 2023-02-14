@@ -28,4 +28,6 @@ final class MSCategoryCollectionViewCellViewModel {
         self.brand = brand
         self.thumbnail = thumbnail
     }
+    
+    
 }

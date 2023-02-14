@@ -39,9 +39,9 @@ final class MSSearchTableViewCell: UITableViewCell {
         return label
     }()
     
-       
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubviews(productImage, nameLabel, priceLabel)
         setupConstraints()
         
@@ -51,9 +51,21 @@ final class MSSearchTableViewCell: UITableViewCell {
     }
     
     public func configure(with product: MSProduct) {
+        let viewModel = MSSearchTableViewCellViewModel(productImageUrlString: product.thumbnail)
         nameLabel.text = product.title
         priceLabel.text = "\(String(product.price))" + " " + "$"
-        productImage.downloaded(from: product.thumbnail)
+        viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.productImage.image = image
+                }
+            case .failure(let error):
+                print(String(describing: error))
+                break
+            }
+        }
     }
     
     private func setupConstraints() {
