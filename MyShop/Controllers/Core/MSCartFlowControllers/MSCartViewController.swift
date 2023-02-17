@@ -28,8 +28,6 @@ final class MSCartViewController: UIViewController {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-     
-            
             cartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             cartView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             cartView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),

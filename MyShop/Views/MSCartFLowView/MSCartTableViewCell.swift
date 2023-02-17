@@ -8,22 +8,20 @@
 import UIKit
 
 final class MSCartTableViewCell: UITableViewCell {
-   
+    
     static let identifier = "cartCell"
     
     private let productImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "phone")
         return imageView
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.text = "iPhone 18 Pro Max Plus"
         label.textColor = .label
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -35,7 +33,6 @@ final class MSCartTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
-        label.text = "4"
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         label.textColor = .label
@@ -65,9 +62,22 @@ final class MSCartTableViewCell: UITableViewCell {
         fatalError("unsupported")
     }
     
-    func configure(with product: MSProduct) {
-        productImage.image = UIImage(named: product.thumbnail)
+    func configure(with product: MSSavedProduct) {
         nameLabel.text = product.title
+        quantityLabel.text = String(product.quantity)
+        let imageViewModel = MSImageForCellViewModel(productImageUrlString: product.url)
+        imageViewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.productImage.image = image
+                }
+            case .failure(let error):
+                print(String(describing: error))
+                break
+            }
+        }
     }
     
     private func setupConstraints() {

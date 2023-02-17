@@ -38,7 +38,7 @@ final class MSProductDetailViewController: UIViewController {
                   barButtonSystemItem: .action,
                   target: self,
                   action: #selector(didTapShare))
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     
     @objc private func didTapShare() {
@@ -77,6 +77,8 @@ extension MSProductDetailViewController: MSProductDetailsViewDelegate {
             let newSavedProduct = MSSavedProduct()
                         newSavedProduct.id = product.id
                         newSavedProduct.quantity = 1
+            newSavedProduct.title = product.title
+            newSavedProduct.url = product.thumbnail
                         MSRealmManager.shared.saveProduct(product: newSavedProduct)
         }
         

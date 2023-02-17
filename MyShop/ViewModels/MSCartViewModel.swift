@@ -9,9 +9,7 @@ import UIKit
 import RealmSwift
 
 final class MSCartViewModel: NSObject {
-    
-    
-    
+    var productsInCart = MSRealmManager.shared.loadSavedProducts()
 }
 
 extension MSCartViewModel: UITableViewDelegate, UITableViewDataSource {
@@ -22,11 +20,12 @@ extension MSCartViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MSCartTableViewCell.identifier, for: indexPath) as? MSCartTableViewCell else { fatalError() }
         cell.backgroundColor = .systemBackground
+        cell.configure(with: Array(productsInCart)[indexPath.row])
         return  cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 120
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
