@@ -39,7 +39,6 @@ final class MSProductDetailsView: UIView {
         let like = UIButton()
         like.translatesAutoresizingMaskIntoConstraints = false
         like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-        //like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.backgroundColor = .secondarySystemBackground
         like.tintColor = .systemRed
         like.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
