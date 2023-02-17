@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class MSCartViewModel: NSObject {
     
@@ -15,7 +16,7 @@ final class MSCartViewModel: NSObject {
 
 extension MSCartViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return MSRealmManager.shared.loadSavedProducts().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

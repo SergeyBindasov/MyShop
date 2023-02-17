@@ -22,6 +22,8 @@ final class MSProductDetailsView: UIView {
     
     private var viewModel: MSProductDetailsViewModel? = nil
     
+    var isLiked = false
+    
     private lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +49,7 @@ final class MSProductDetailsView: UIView {
         like.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         return like
     }()
-
+    
     init(frame: CGRect, product: MSProduct) {
         self.product = product
         super.init(frame: frame)
@@ -59,7 +61,7 @@ final class MSProductDetailsView: UIView {
         setUpCollectionView()
         addSubviews(collectionView, addToCartButton, faveButton)
         addConstraints()
-    
+        
     }
     
     required init?(coder: NSCoder) {
@@ -71,7 +73,13 @@ final class MSProductDetailsView: UIView {
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {
-        sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+        
+        if isLiked {
+            sender.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+        } else {
+            sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+        }
+        isLiked = !isLiked
         delegate?.didTaptoAddtoLikeButton(self, didSelectProduct: product)
     }
     
@@ -111,7 +119,7 @@ final class MSProductDetailsView: UIView {
     
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
         guard let viewModel = viewModel else { fatalError("unsupported")}
-       
+        
         let sectionType = viewModel.sections
         switch sectionType[sectionIndex] {
         case .productGallery:
@@ -135,6 +143,4 @@ final class MSProductDetailsView: UIView {
             }
         }
     }
-
-
 }
