@@ -16,8 +16,6 @@ final class MSCartView: UIView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(MSCartTableViewCell.self, forCellReuseIdentifier: MSCartTableViewCell.identifier)
         table.backgroundColor = .systemBackground
-        
-        
         return table
         
     }()

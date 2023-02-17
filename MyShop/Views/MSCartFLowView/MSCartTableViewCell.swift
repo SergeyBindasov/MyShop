@@ -65,6 +65,11 @@ final class MSCartTableViewCell: UITableViewCell {
         fatalError("unsupported")
     }
     
+    func configure(with product: MSProduct) {
+        productImage.image = UIImage(named: product.thumbnail)
+        nameLabel.text = product.title
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             productImage.topAnchor.constraint(equalTo: topAnchor, constant: 15),
