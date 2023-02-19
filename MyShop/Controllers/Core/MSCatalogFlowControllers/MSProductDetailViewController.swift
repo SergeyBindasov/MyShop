@@ -79,6 +79,7 @@ extension MSProductDetailViewController: MSProductDetailsViewDelegate {
                         newSavedProduct.quantity = 1
             newSavedProduct.title = product.title
             newSavedProduct.url = product.thumbnail
+            newSavedProduct.price = product.price
                         MSRealmManager.shared.saveProduct(product: newSavedProduct)
         }
         

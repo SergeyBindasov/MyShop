@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MSCartTableViewCellDelegate: AnyObject {
+    func quantityChanged(newQuantity: Int)
+}
+
 final class MSCartTableViewCell: UITableViewCell {
+    
+    weak var delegate: MSCartTableViewCellDelegate?
     
     static let identifier = "cartCell"
     
@@ -23,7 +29,7 @@ final class MSCartTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,21 +42,28 @@ final class MSCartTableViewCell: UITableViewCell {
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         label.textColor = .label
-        label.backgroundColor = .systemMint
-        label.numberOfLines = 1
+        label.backgroundColor = .systemTeal
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var stepper: UIStepper = {
+    lazy var stepper: UIStepper = {
         let stepper = UIStepper()
         stepper.minimumValue = 1
         stepper.maximumValue = 99
         stepper.wraps = false
         stepper.autorepeat = true
         stepper.translatesAutoresizingMaskIntoConstraints = false
+        stepper.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
         return stepper
     }()
+    
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        let newQuantity = Int(sender.value)
+           quantityLabel.text = String(newQuantity)
+    // добавть сохранение в модель
+       }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,6 +73,13 @@ final class MSCartTableViewCell: UITableViewCell {
     }
     required init?(coder: NSCoder) {
         fatalError("unsupported")
+    }
+    
+    override func prepareForReuse() {
+        productImage.image = nil
+        nameLabel.text = nil
+        quantityLabel.text = nil
+        
     }
     
     func configure(with product: MSSavedProduct) {
@@ -82,23 +102,23 @@ final class MSCartTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            productImage.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-            productImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            productImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+            productImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            productImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            productImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             productImage.heightAnchor.constraint(equalToConstant: 65),
             productImage.widthAnchor.constraint(equalToConstant: 65),
             
             nameLabel.centerYAnchor.constraint(equalTo: productImage.centerYAnchor),
             nameLabel.leftAnchor.constraint(equalTo: productImage.rightAnchor, constant: 10),
+            nameLabel.widthAnchor.constraint(equalToConstant: 160),
+            nameLabel.heightAnchor.constraint(equalToConstant: 60),
             quantityLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-            quantityLabel.leftAnchor.constraint(equalTo: nameLabel.rightAnchor, constant: 10),
+            quantityLabel.rightAnchor.constraint(equalTo: stepper.leftAnchor, constant: -10),
             quantityLabel.widthAnchor.constraint(equalToConstant: 30),
             quantityLabel.heightAnchor.constraint(equalToConstant: 30),
             stepper.centerYAnchor.constraint(equalTo: quantityLabel.centerYAnchor),
             stepper.leftAnchor.constraint(equalTo: quantityLabel.rightAnchor, constant: 10),
-            stepper.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            
-            
+            stepper.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
         ])
     }
 }
