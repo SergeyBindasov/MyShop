@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol MSCartTableViewCellDelegate: AnyObject {
-    func quantityChanged(newQuantity: Int)
-}
 
 final class MSCartTableViewCell: UITableViewCell {
-    
-    weak var delegate: MSCartTableViewCellDelegate?
-    
+        
     static let identifier = "cartCell"
     
     private let productImage: UIImageView = {
