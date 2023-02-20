@@ -164,8 +164,8 @@
 		A55E4FFF298D46860050CBD6 /* MSCatalogFlowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A5D746132988121E00C3F081 /* MSCatalogViewController.swift */,
 				A55E5000298D46C80050CBD6 /* MSCategoryViewController.swift */,
+				A5D746132988121E00C3F081 /* MSCatalogViewController.swift */,
 				A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */,
 				A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */,
 			);

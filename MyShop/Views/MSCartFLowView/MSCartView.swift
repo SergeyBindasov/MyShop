@@ -11,6 +11,7 @@ final class MSCartView: UIView {
     
     let viewModel = MSCartViewModel()
     
+    
      lazy var cartTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +35,7 @@ final class MSCartView: UIView {
     
    
     private func tableMethods() {
+       
         cartTableView.dataSource = viewModel
         cartTableView.delegate = viewModel
     }

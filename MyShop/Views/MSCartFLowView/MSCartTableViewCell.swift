@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 
-final class MSCartTableViewCell: UITableViewCell {
+final class MSCartTableViewCell: SwipeTableViewCell {
         
     static let identifier = "cartCell"
     

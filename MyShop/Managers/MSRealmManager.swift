@@ -11,6 +11,7 @@ import RealmSwift
 final class MSRealmManager {
     static let shared = MSRealmManager()
     let realm = try! Realm()
+    var products: Results<MSSavedProduct>?
     
     private init() {}
     
@@ -28,5 +29,17 @@ final class MSRealmManager {
     func loadSavedProducts() -> Results<MSSavedProduct> {
         let products = realm.objects(MSSavedProduct.self)
         return products
+    }
+    
+    func destroy(at indexPath: Int) {
+        if let product = products?[indexPath] {
+            do {
+                try realm.write({
+                    realm.delete(product)
+                })
+            } catch{
+                print("Error deleting item \(error)")
+            }
+        }
     }
 }
