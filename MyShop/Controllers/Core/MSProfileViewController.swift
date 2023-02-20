@@ -11,8 +11,19 @@ final class MSProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Profile"
         view.backgroundColor = .systemBackground
+        addView()
+    }
+    
+    func addView() {
+        let profileView = MSProfileView(frame: .zero, customer: nil)
+        view.addSubviews(profileView)
+        NSLayoutConstraint.activate([
+            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            profileView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            profileView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        ])
     }
 }

@@ -37,6 +37,11 @@
 		A5A4318129A26569003DBAFD /* MSCartOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318029A26569003DBAFD /* MSCartOrderCell.swift */; };
 		A5A4318329A3BBDE003DBAFD /* MSConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318229A3BBDE003DBAFD /* MSConfirmOrderViewController.swift */; };
 		A5A4318529A400E7003DBAFD /* MSCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318429A400E7003DBAFD /* MSCustomer.swift */; };
+		A5A4318729A40413003DBAFD /* MSProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318629A40413003DBAFD /* MSProfileView.swift */; };
+		A5A4318A29A40800003DBAFD /* MSProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318929A40800003DBAFD /* MSProfileViewViewModel.swift */; };
+		A5A4318C29A40B2D003DBAFD /* MSPersonalInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318B29A40B2D003DBAFD /* MSPersonalInfoCell.swift */; };
+		A5A4318E29A40B75003DBAFD /* MSAdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318D29A40B75003DBAFD /* MSAdressCell.swift */; };
+		A5A4319029A40BE0003DBAFD /* MSBankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318F29A40BE0003DBAFD /* MSBankCardCell.swift */; };
 		A5D07BA0299FD89F00C6C8D5 /* MSSavedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D07B9F299FD89F00C6C8D5 /* MSSavedProduct.swift */; };
 		A5D07BA2299FDBBD00C6C8D5 /* MSRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D07BA1299FDBBD00C6C8D5 /* MSRealmManager.swift */; };
 		A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745F729880CDE00C3F081 /* AppDelegate.swift */; };
@@ -86,6 +91,11 @@
 		A5A4318029A26569003DBAFD /* MSCartOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCartOrderCell.swift; sourceTree = "<group>"; };
 		A5A4318229A3BBDE003DBAFD /* MSConfirmOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSConfirmOrderViewController.swift; sourceTree = "<group>"; };
 		A5A4318429A400E7003DBAFD /* MSCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCustomer.swift; sourceTree = "<group>"; };
+		A5A4318629A40413003DBAFD /* MSProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProfileView.swift; sourceTree = "<group>"; };
+		A5A4318929A40800003DBAFD /* MSProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProfileViewViewModel.swift; sourceTree = "<group>"; };
+		A5A4318B29A40B2D003DBAFD /* MSPersonalInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSPersonalInfoCell.swift; sourceTree = "<group>"; };
+		A5A4318D29A40B75003DBAFD /* MSAdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSAdressCell.swift; sourceTree = "<group>"; };
+		A5A4318F29A40BE0003DBAFD /* MSBankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSBankCardCell.swift; sourceTree = "<group>"; };
 		A5D07B9F299FD89F00C6C8D5 /* MSSavedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSavedProduct.swift; sourceTree = "<group>"; };
 		A5D07BA1299FDBBD00C6C8D5 /* MSRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSRealmManager.swift; sourceTree = "<group>"; };
 		A5D745F429880CDE00C3F081 /* MyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +205,17 @@
 			path = MSCartFLowView;
 			sourceTree = "<group>";
 		};
+		A5A4318829A4041D003DBAFD /* MSProfileFlowViews */ = {
+			isa = PBXGroup;
+			children = (
+				A5A4318629A40413003DBAFD /* MSProfileView.swift */,
+				A5A4318B29A40B2D003DBAFD /* MSPersonalInfoCell.swift */,
+				A5A4318D29A40B75003DBAFD /* MSAdressCell.swift */,
+				A5A4318F29A40BE0003DBAFD /* MSBankCardCell.swift */,
+			);
+			path = MSProfileFlowViews;
+			sourceTree = "<group>";
+		};
 		A5D745EB29880CDE00C3F081 = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +264,7 @@
 				A5759516299FB71D00612BA2 /* MSCartFLowView */,
 				A52DB35A29951AB800530DE3 /* MSCatalogFlowViews */,
 				A5D7460229880CE000C3F081 /* LaunchScreen.storyboard */,
+				A5A4318829A4041D003DBAFD /* MSProfileFlowViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +274,7 @@
 			children = (
 				A52DB35B29951B4C00530DE3 /* MSCatalogFlowViewModels */,
 				A5759519299FBADC00612BA2 /* MSCartViewModel.swift */,
+				A5A4318929A40800003DBAFD /* MSProfileViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -428,11 +451,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A4318729A40413003DBAFD /* MSProfileView.swift in Sources */,
 				A573FEA5298BED5D003488C0 /* MSPromoCollectionViewCell.swift in Sources */,
 				A575951C299FBD5C00612BA2 /* MSCartTableViewCell.swift in Sources */,
 				A573FEAD298C0282003488C0 /* MSCategoriesCollectionViewCellViewModel.swift in Sources */,
 				A5D745FC29880CDE00C3F081 /* MSTabBarViewController.swift in Sources */,
+				A5A4319029A40BE0003DBAFD /* MSBankCardCell.swift in Sources */,
 				A5466D25299BC7BE00E3152E /* MSImageForCellViewModel.swift in Sources */,
+				A5A4318E29A40B75003DBAFD /* MSAdressCell.swift in Sources */,
 				A5759518299FB74000612BA2 /* MSCartView.swift in Sources */,
 				A575951A299FBADC00612BA2 /* MSCartViewModel.swift in Sources */,
 				A5D07BA2299FDBBD00C6C8D5 /* MSRealmManager.swift in Sources */,
@@ -440,6 +466,7 @@
 				A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */,
 				A5D746162988126A00C3F081 /* MSCartViewController.swift in Sources */,
 				A5D7461C29881C2B00C3F081 /* MSService.swift in Sources */,
+				A5A4318A29A40800003DBAFD /* MSProfileViewViewModel.swift in Sources */,
 				A5D746142988121E00C3F081 /* MSCatalogViewController.swift in Sources */,
 				A5A4318129A26569003DBAFD /* MSCartOrderCell.swift in Sources */,
 				A5466D23299BC3CB00E3152E /* MSImageLoader.swift in Sources */,
@@ -449,6 +476,7 @@
 				A5173FD72999702F00430E68 /* MSSearchTableViewCell.swift in Sources */,
 				A573FEA1298BDF1A003488C0 /* MSCatalogViewModel.swift in Sources */,
 				A590AA5A2993C80600212C88 /* MSCategoryCollectionViewCellViewModel.swift in Sources */,
+				A5A4318C29A40B2D003DBAFD /* MSPersonalInfoCell.swift in Sources */,
 				A573FEA3298BDFCB003488C0 /* Extensions.swift in Sources */,
 				A5A4318529A400E7003DBAFD /* MSCustomer.swift in Sources */,
 				A5D7461E29881CD100C3F081 /* MSRequest.swift in Sources */,
