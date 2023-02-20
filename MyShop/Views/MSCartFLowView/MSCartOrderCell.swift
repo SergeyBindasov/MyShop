@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol MSCartOrderCellDelegate: AnyObject {
+    func completeButtonDidPress()
+}
+
 final class MSCartOrderCell: UITableViewCell {
     static let identifier = "orderCell"
+    
+    public weak var delegate: MSCartOrderCellDelegate?
     
     private lazy var completeOrederButton: UIButton = {
         let button = UIButton()
@@ -63,8 +69,10 @@ final class MSCartOrderCell: UITableViewCell {
     }
     
     @objc func completeOrderButtonPressed(_ sender: UIButton) {
+        
         sender.alpha = 0.4
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.delegate?.completeButtonDidPress()
             sender.alpha = 1
         }
     }

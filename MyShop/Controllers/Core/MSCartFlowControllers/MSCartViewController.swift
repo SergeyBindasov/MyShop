@@ -15,10 +15,10 @@ final class MSCartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(cartView)
+        cartView.viewModel.delegate = self
         setupLayout()
         title = "My cart"
         view.backgroundColor = .systemBackground
-        detailsVC?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +36,18 @@ final class MSCartViewController: UIViewController {
     }
 }
 
-extension MSCartViewController: MSProductDetailViewControllerDelegate {
-    func newProductAddedToCart() {
-        cartView.cartTableView.reloadData()
-        
+extension MSCartViewController: MSCartViewModelDelegate {
+    func orderButtonDidPress() {
+        navigationController?.pushViewController(MSConfirmOrderViewController(), animated: true)
+    }
+    
+    
 }
-}
+
+
+
+
+
+
 
 

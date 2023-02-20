@@ -9,7 +9,15 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
+protocol MSCartViewModelDelegate: AnyObject {
+    func orderButtonDidPress()
+}
+
 final class MSCartViewModel: NSObject {
+    
+    weak var delegate: MSCartViewModelDelegate?
+    
+    
     var productsInCart = MSRealmManager.shared.loadSavedProducts()
     let realm = try! Realm()
     var products: Results<MSSavedProduct>?
@@ -23,8 +31,13 @@ final class MSCartViewModel: NSObject {
     func loadProducts() {
         products = realm.objects(MSSavedProduct.self)
         tableView?.reloadData()
+    }    
+}
+
+extension MSCartViewModel: MSCartOrderCellDelegate {
+    func completeButtonDidPress() {
+        delegate?.orderButtonDidPress()
     }
-    
 }
 
 extension MSCartViewModel: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
@@ -52,6 +65,7 @@ extension MSCartViewModel: UITableViewDelegate, UITableViewDataSource, SwipeTabl
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSCartOrderCell.identifier, for: indexPath) as? MSCartOrderCell else { fatalError() }
             cell.backgroundColor = .systemBackground
             cell.configure(products: Array(productsInCart))
+            cell.delegate = self
             return cell
         }
     }

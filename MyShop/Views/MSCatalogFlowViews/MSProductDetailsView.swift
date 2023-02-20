@@ -68,8 +68,12 @@ final class MSProductDetailsView: UIView {
         fatalError("unsupported")
     }
     
-    @objc func addToCartButtonPressed() {
-        delegate?.didTaptoAddtoCartButton(self, didSelectProduct: product)
+    @objc func addToCartButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.4
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                   sender.alpha = 1
+                   self.delegate?.didTaptoAddtoCartButton(self, didSelectProduct: self.product)
+               }
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {

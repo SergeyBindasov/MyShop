@@ -35,6 +35,7 @@
 		A59B64E129917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B64E029917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift */; };
 		A59B64E329917F9400B1A2B5 /* MSCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B64E229917F9400B1A2B5 /* MSCategoryView.swift */; };
 		A5A4318129A26569003DBAFD /* MSCartOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318029A26569003DBAFD /* MSCartOrderCell.swift */; };
+		A5A4318329A3BBDE003DBAFD /* MSConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4318229A3BBDE003DBAFD /* MSConfirmOrderViewController.swift */; };
 		A5D07BA0299FD89F00C6C8D5 /* MSSavedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D07B9F299FD89F00C6C8D5 /* MSSavedProduct.swift */; };
 		A5D07BA2299FDBBD00C6C8D5 /* MSRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D07BA1299FDBBD00C6C8D5 /* MSRealmManager.swift */; };
 		A5D745F829880CDE00C3F081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D745F729880CDE00C3F081 /* AppDelegate.swift */; };
@@ -82,6 +83,7 @@
 		A59B64E029917B4300B1A2B5 /* MSCatalogHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCatalogHeaderViewCell.swift; sourceTree = "<group>"; };
 		A59B64E229917F9400B1A2B5 /* MSCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCategoryView.swift; sourceTree = "<group>"; };
 		A5A4318029A26569003DBAFD /* MSCartOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSCartOrderCell.swift; sourceTree = "<group>"; };
+		A5A4318229A3BBDE003DBAFD /* MSConfirmOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSConfirmOrderViewController.swift; sourceTree = "<group>"; };
 		A5D07B9F299FD89F00C6C8D5 /* MSSavedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSavedProduct.swift; sourceTree = "<group>"; };
 		A5D07BA1299FDBBD00C6C8D5 /* MSRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSRealmManager.swift; sourceTree = "<group>"; };
 		A5D745F429880CDE00C3F081 /* MyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D746152988126A00C3F081 /* MSCartViewController.swift */,
+				A5A4318229A3BBDE003DBAFD /* MSConfirmOrderViewController.swift */,
 			);
 			path = MSCartFlowControllers;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				A573FEAB298C0089003488C0 /* MSCategoriesCollectionViewCell.swift in Sources */,
 				A573FE9F298BDEF0003488C0 /* MSCatalogView.swift in Sources */,
 				A55E5001298D46C90050CBD6 /* MSCategoryViewController.swift in Sources */,
+				A5A4318329A3BBDE003DBAFD /* MSConfirmOrderViewController.swift in Sources */,
 				A5D7461A298817F300C3F081 /* MSProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
