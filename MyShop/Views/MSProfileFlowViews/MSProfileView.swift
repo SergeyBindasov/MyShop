@@ -46,8 +46,8 @@ final class MSProfileView: UIView {
         NSLayoutConstraint.activate([
             profileTableView.topAnchor.constraint(equalTo: topAnchor),
             profileTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            profileTableView.rightAnchor.constraint(equalTo: rightAnchor),
-            profileTableView.leftAnchor.constraint(equalTo: leftAnchor),
+            profileTableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
+            profileTableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
         ])
     }
 }
