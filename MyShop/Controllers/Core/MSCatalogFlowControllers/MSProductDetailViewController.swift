@@ -16,6 +16,8 @@ final class MSProductDetailViewController: UIViewController {
     
     public weak var delegate: MSProductDetailViewControllerDelegate?
     
+    var imageToShare = UIImage()
+    
     private let product: MSProduct
 
     var savedProducts: Results<MSSavedProduct>?
@@ -42,8 +44,11 @@ final class MSProductDetailViewController: UIViewController {
     }
     
     @objc private func didTapShare() {
-            // Share
-        print("Поделиться \(product.id)")
+       
+        let activityVC = UIActivityViewController(activityItems:
+                                                    ["Check what I've found - \(product.title)"],applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = view
+        present(activityVC, animated: true)
         }
     
     private func setupView() {
