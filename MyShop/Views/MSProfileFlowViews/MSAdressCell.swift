@@ -26,7 +26,6 @@ final class MSAdressCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
-        label.text = "City: Moscow"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +36,6 @@ final class MSAdressCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
-        label.text = "State: DC"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,18 +46,16 @@ final class MSAdressCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
-        label.text = "Postal code: 46007"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let adressLabel: UILabel = {
+    private let addressLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
-        label.text = "Adress: 2811 Battery Place Northwest"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -68,10 +64,10 @@ final class MSAdressCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemPink
+        contentView.backgroundColor = .systemGreen.withAlphaComponent(0.7)
         contentView.layer.cornerRadius = 8
         contentView.layer.masksToBounds = true
-        contentView.addSubviews(introLabel, cityLabel, stateLabel, postalLabel, adressLabel)
+        contentView.addSubviews(introLabel, cityLabel, stateLabel, postalLabel, addressLabel)
         setupLayout()
         
     }
@@ -79,8 +75,11 @@ final class MSAdressCell: UITableViewCell {
         fatalError("unsupported")
     }
     
-    func configure(with: MSCustomer) {
-        
+    func configure(with customer: MSCustomer) {
+        cityLabel.text = "City: \(customer.address.city)"
+        stateLabel.text = "State: \(customer.address.state)"
+        postalLabel.text = "Postal code: \(customer.address.postalCode)"
+        addressLabel.text = "Address: \(customer.address.address)"
     }
     
     private func setupLayout() {
@@ -93,10 +92,10 @@ final class MSAdressCell: UITableViewCell {
             stateLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
             postalLabel.topAnchor.constraint(equalTo: stateLabel.bottomAnchor, constant: 7),
             postalLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-            adressLabel.topAnchor.constraint(equalTo: postalLabel.bottomAnchor, constant: 7),
-            adressLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-            adressLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
-            adressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            addressLabel.topAnchor.constraint(equalTo: postalLabel.bottomAnchor, constant: 7),
+            addressLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            addressLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
+            addressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
     }
 }

@@ -8,16 +8,20 @@
 import UIKit
 
 final class MSProfileViewController: UIViewController {
+    
+    let viewModel = MSProfileViewViewModel()
+    
+    let profileView = MSProfileView(frame: .zero, customer: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .systemBackground
+        viewModel.delegate = self
         addView()
     }
     
     func addView() {
-        let profileView = MSProfileView(frame: .zero, customer: nil)
         view.addSubviews(profileView)
         NSLayoutConstraint.activate([
             profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -26,4 +30,12 @@ final class MSProfileViewController: UIViewController {
             profileView.leftAnchor.constraint(equalTo: view.leftAnchor),
         ])
     }
+}
+
+extension MSProfileViewController: MSProfileViewViewModelDelegate {
+    func didLoadCustomerInfo() {
+        profileView.profileTableView.reloadData()
+    }
+    
+    
 }
