@@ -33,7 +33,7 @@ final class MSCategoryViewViewModel: NSObject {
     }
     
     public func fetchProducts(category: String) {
-        MSService.shared.execute(MSRequest(urlPath: "/category/"+category), expecting: MSGetAllProdactInfo.self) { [weak self] result in
+        MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.productUrl+"/category/"+category), expecting: MSGetAllProdactInfo.self) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.products = response.products

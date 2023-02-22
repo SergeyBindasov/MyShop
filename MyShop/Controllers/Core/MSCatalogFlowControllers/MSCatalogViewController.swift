@@ -9,7 +9,7 @@ import UIKit
 
 final class MSCatalogViewController: UIViewController {
     
-    let request = MSRequest(urlPath: "/categories")
+    let request = MSRequest(urlPath: MSRequest.URLS.productUrl+"/categories")
     var catergory: [String] = []
     
     private let viewModel = MSCatalogViewModel()

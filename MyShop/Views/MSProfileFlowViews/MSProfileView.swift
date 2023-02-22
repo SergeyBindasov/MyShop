@@ -40,6 +40,7 @@ final class MSProfileView: UIView {
     func tableViewMethods() {
         profileTableView.dataSource = viewModel
         profileTableView.delegate = viewModel
+        viewModel.fetchCustomerInfo(id: 2)
     }
     
     private func setupLayout() {

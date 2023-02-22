@@ -9,8 +9,23 @@ import UIKit
 
 final class MSProfileViewViewModel: NSObject {
     
+    public func fetchCustomerInfo(id: Int) { //-> MSCustomer {
+        //guard let customerUrl = URL(string: MSRequest.URLS.customerUrl) else { return }
+        MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(id)), expecting: MSCustomer.self) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print(response)
+                //self?.products = response.products
+                DispatchQueue.main.async {
+//self?.delegate?.didLoadCategoryProducts()
+                }
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
 }
-
+//(MSRequest(urlPath: "/category/"+)
 extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {

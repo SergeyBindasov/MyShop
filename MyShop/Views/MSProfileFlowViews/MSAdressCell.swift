@@ -10,7 +10,7 @@ import UIKit
 final class MSAdressCell: UITableViewCell {
     
     static let identifier = "adressCell"
-    
+        
     private let introLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -79,6 +79,10 @@ final class MSAdressCell: UITableViewCell {
         fatalError("unsupported")
     }
     
+    func configure(with: MSCustomer) {
+        
+    }
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             introLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -93,8 +97,6 @@ final class MSAdressCell: UITableViewCell {
             adressLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
             adressLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
             adressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            
-            
         ])
     }
 }

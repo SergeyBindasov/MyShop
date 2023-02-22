@@ -18,17 +18,17 @@ struct MSCustomer: Codable {
     let username: String
     let password: String
     let image: String
-    let adress: [Adress]
-    let bank: [Bank]
+    let address: Address
+    let bank: Bank
 
 }
 
-struct Adress: Codable {
-    let adress: String
+struct Address: Codable {
+    let address: String
     let city: String
     let postalCode: String
     let state: String
-    let coordinates: [Coordinates]
+    let coordinates: Coordinates
 }
 
 struct Coordinates: Codable {

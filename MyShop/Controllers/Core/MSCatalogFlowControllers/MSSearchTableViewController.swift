@@ -31,7 +31,7 @@ final class MSSearchTableViewController: UITableViewController {
     }
     
     func fetchProducts(search: String) {
-        MSService.shared.execute(MSRequest(urlPath: "/search?q="+search), expecting: MSGetAllProdactInfo.self) { [weak self] result in
+        MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.searchUrl+search), expecting: MSGetAllProdactInfo.self) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.searchResults = response.products
