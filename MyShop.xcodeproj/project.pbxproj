@@ -12,6 +12,7 @@
 		A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */; };
 		A5173FD5299965D000430E68 /* MSSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */; };
 		A5173FD72999702F00430E68 /* MSSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */; };
+		A51D79EE29A7D6EE0068E06D /* MSWishlistCellVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D79ED29A7D6ED0068E06D /* MSWishlistCellVieModel.swift */; };
 		A52DB359299518F700530DE3 /* MSProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */; };
 		A52DB35D29951C4D00530DE3 /* MSProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */; };
 		A52DB35F2995204C00530DE3 /* MSProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */; };
@@ -68,6 +69,7 @@
 		A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSOffersHeaderViewCell.swift; sourceTree = "<group>"; };
 		A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewController.swift; sourceTree = "<group>"; };
 		A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewCell.swift; sourceTree = "<group>"; };
+		A51D79ED29A7D6ED0068E06D /* MSWishlistCellVieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSWishlistCellVieModel.swift; sourceTree = "<group>"; };
 		A52DB358299518F700530DE3 /* MSProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailViewController.swift; sourceTree = "<group>"; };
 		A52DB35C29951C4D00530DE3 /* MSProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsView.swift; sourceTree = "<group>"; };
 		A52DB35E2995204C00530DE3 /* MSProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProductDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				A52DB35B29951B4C00530DE3 /* MSCatalogFlowViewModels */,
 				A5759519299FBADC00612BA2 /* MSCartViewModel.swift */,
 				A5A4318929A40800003DBAFD /* MSProfileViewViewModel.swift */,
+				A51D79ED29A7D6ED0068E06D /* MSWishlistCellVieModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				A55E5001298D46C90050CBD6 /* MSCategoryViewController.swift in Sources */,
 				A5A4318329A3BBDE003DBAFD /* MSConfirmOrderViewController.swift in Sources */,
 				A5D7461A298817F300C3F081 /* MSProduct.swift in Sources */,
+				A51D79EE29A7D6EE0068E06D /* MSWishlistCellVieModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -115,7 +115,6 @@ extension MSProductDetailViewController: MSProductDetailsViewDelegate {
             newSavedProduct.price = product.price
                         MSRealmManager.shared.saveProduct(product: newSavedProduct)
         }
-        
         delegate?.newProductAddedToCart()
 }
 }
