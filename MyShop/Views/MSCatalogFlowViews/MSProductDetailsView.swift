@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol MSProductDetailsViewDelegate: AnyObject {
     func didTaptoAddtoCartButton(_ msProductDetailsView: MSProductDetailsView, didSelectProduct product: MSProduct)
@@ -13,6 +14,8 @@ protocol MSProductDetailsViewDelegate: AnyObject {
 }
 
 final class MSProductDetailsView: UIView {
+    
+    let realm = try! Realm()
     
     public weak var delegate: MSProductDetailsViewDelegate?
     
@@ -61,6 +64,7 @@ final class MSProductDetailsView: UIView {
         setUpCollectionView()
         addSubviews(collectionView, addToCartButton, faveButton)
         addConstraints()
+        customLikeButtonState(faveButton)
         
     }
     
@@ -77,18 +81,30 @@ final class MSProductDetailsView: UIView {
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {
-        
-        if isLiked {
-            sender.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-        } else {
-            sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
-        }
-        isLiked = !isLiked
+        customLikeButtonState(sender)
+                if isLiked {
+                    sender.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+                } else {
+                    sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                }
         delegate?.didTaptoAddtoLikeButton(self, didSelectProduct: product)
     }
     
-    
-    
+    func customLikeButtonState(_ sender: UIButton) {
+        let selectedProduct = product.id
+        let likedproducts = realm.objects(MSLikedProduct.self).filter("id == %@",selectedProduct)
+        if let thatProduct = likedproducts.first {
+            if thatProduct.isLiked == true {
+                
+                sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                isLiked = true
+            } else {
+                sender.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+                isLiked = false
+            }
+        }
+    }
+
     private func addConstraints() {
         guard let collectionView = collectionView else { return }
         NSLayoutConstraint.activate([

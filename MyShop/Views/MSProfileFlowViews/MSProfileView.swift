@@ -19,6 +19,7 @@ final class MSProfileView: UIView {
         table.register(MSPersonalInfoCell.self, forCellReuseIdentifier: MSPersonalInfoCell.identifier)
         table.register(MSAdressCell.self, forCellReuseIdentifier: MSAdressCell.identifier)
         table.register(MSBankCardCell.self, forCellReuseIdentifier: MSBankCardCell.identifier)
+        table.register(MSWishlistCell.self, forCellReuseIdentifier: MSWishlistCell.identifier)
         table.backgroundColor = .systemBackground
        return table
    }()

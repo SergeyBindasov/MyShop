@@ -37,7 +37,7 @@ final class MSProfileViewViewModel: NSObject {
 extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        if indexPath.section == 0 {
@@ -52,8 +52,10 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
             return "Personal information"
         } else if section == 1 {
                 return "Delivery adress"
-        } else {
+        } else if section == 2{
             return "Saved bank cards"
+        } else {
+            return " My wishlist"
         }
     }
     
@@ -71,9 +73,12 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSAdressCell.identifier, for: indexPath) as? MSAdressCell else { fatalError() }
             cell.configure(with: customer)
         return cell
-        } else {
+        } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSBankCardCell.identifier, for: indexPath) as? MSBankCardCell else { fatalError() }
         return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MSWishlistCell.identifier, for: indexPath) as? MSWishlistCell else { fatalError() }
+            return cell
         }
 }
 } 

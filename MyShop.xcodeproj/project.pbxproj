@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A507ED0329A6A98D00989783 /* MSWishlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A507ED0229A6A98D00989783 /* MSWishlistCell.swift */; };
+		A507ED0529A6AC2B00989783 /* MSLikedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A507ED0429A6AC2B00989783 /* MSLikedProduct.swift */; };
 		A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */; };
 		A5173FD5299965D000430E68 /* MSSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */; };
 		A5173FD72999702F00430E68 /* MSSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		1E07E0750A32C84D4670B279 /* Pods_MyShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75316C58B154FABF67E160F8 /* Pods-MyShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyShop.debug.xcconfig"; path = "Target Support Files/Pods-MyShop/Pods-MyShop.debug.xcconfig"; sourceTree = "<group>"; };
+		A507ED0229A6A98D00989783 /* MSWishlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSWishlistCell.swift; sourceTree = "<group>"; };
+		A507ED0429A6AC2B00989783 /* MSLikedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSLikedProduct.swift; sourceTree = "<group>"; };
 		A513D8B3299167D5004F8A31 /* MSOffersHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSOffersHeaderViewCell.swift; sourceTree = "<group>"; };
 		A5173FD4299965D000430E68 /* MSSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewController.swift; sourceTree = "<group>"; };
 		A5173FD62999702F00430E68 /* MSSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				A5A4318B29A40B2D003DBAFD /* MSPersonalInfoCell.swift */,
 				A5A4318D29A40B75003DBAFD /* MSAdressCell.swift */,
 				A5A4318F29A40BE0003DBAFD /* MSBankCardCell.swift */,
+				A507ED0229A6A98D00989783 /* MSWishlistCell.swift */,
 			);
 			path = MSProfileFlowViews;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				A5D74619298817F300C3F081 /* MSProduct.swift */,
 				A5A4318429A400E7003DBAFD /* MSCustomer.swift */,
 				A5D07B9F299FD89F00C6C8D5 /* MSSavedProduct.swift */,
+				A507ED0429A6AC2B00989783 /* MSLikedProduct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				A5466D25299BC7BE00E3152E /* MSImageForCellViewModel.swift in Sources */,
 				A5A4318E29A40B75003DBAFD /* MSAdressCell.swift in Sources */,
 				A5759518299FB74000612BA2 /* MSCartView.swift in Sources */,
+				A507ED0529A6AC2B00989783 /* MSLikedProduct.swift in Sources */,
 				A575951A299FBADC00612BA2 /* MSCartViewModel.swift in Sources */,
 				A5D07BA2299FDBBD00C6C8D5 /* MSRealmManager.swift in Sources */,
 				A513D8B4299167D5004F8A31 /* MSOffersHeaderViewCell.swift in Sources */,
@@ -491,6 +498,7 @@
 				A59B64E329917F9400B1A2B5 /* MSCategoryView.swift in Sources */,
 				A567EAC22997B3D4005945A7 /* MSSectionBackground.swift in Sources */,
 				A567EAC42997B765005945A7 /* MSProductGalleryCollectionViewCell.swift in Sources */,
+				A507ED0329A6A98D00989783 /* MSWishlistCell.swift in Sources */,
 				A5D07BA0299FD89F00C6C8D5 /* MSSavedProduct.swift in Sources */,
 				A573FEAB298C0089003488C0 /* MSCategoriesCollectionViewCell.swift in Sources */,
 				A573FE9F298BDEF0003488C0 /* MSCatalogView.swift in Sources */,

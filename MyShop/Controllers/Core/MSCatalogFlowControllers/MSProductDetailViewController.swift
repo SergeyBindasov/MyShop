@@ -14,6 +14,9 @@ protocol MSProductDetailViewControllerDelegate: AnyObject {
 
 final class MSProductDetailViewController: UIViewController {
     
+    let realm = try! Realm()
+    
+    
     public weak var delegate: MSProductDetailViewControllerDelegate?
     
     var imageToShare = UIImage()
@@ -41,6 +44,7 @@ final class MSProductDetailViewController: UIViewController {
                   target: self,
                   action: #selector(didTapShare))
         //print(Realm.Configuration.defaultConfiguration.fileURL)
+        //print(realm.objects(MSLikedProduct.self).count)
     }
     
     @objc private func didTapShare() {
@@ -67,7 +71,31 @@ final class MSProductDetailViewController: UIViewController {
 
 extension MSProductDetailViewController: MSProductDetailsViewDelegate {
     func didTaptoAddtoLikeButton(_ msProductDetailsView: MSProductDetailsView, didSelectProduct product: MSProduct) {
-     
+        let selectedProduct = product.id
+        let likedproducts = realm.objects(MSLikedProduct.self).filter("id == %@",selectedProduct)
+        if let thisProduct = likedproducts.first {
+            do {
+                print(thisProduct.id)
+                try realm.write({
+                    realm.delete(thisProduct)
+                })
+            } catch{
+                print("Error deleting item \(error)")
+            }
+        } else {
+            let likedProduct = MSLikedProduct()
+            likedProduct.id = product.id
+            likedProduct.title = product.title
+            likedProduct.isLiked = true
+            likedProduct.url = product.thumbnail
+            do {
+                try realm.write({
+                    realm.add(likedProduct)
+                })
+            } catch {
+                print ("error saving context \(error)")
+            }
+        }
     }
 
     
