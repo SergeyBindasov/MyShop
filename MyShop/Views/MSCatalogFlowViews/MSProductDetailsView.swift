@@ -87,6 +87,7 @@ final class MSProductDetailsView: UIView {
                 } else {
                     sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
                 }
+        isLiked = !isLiked
         delegate?.didTaptoAddtoLikeButton(self, didSelectProduct: product)
     }
     
@@ -95,7 +96,6 @@ final class MSProductDetailsView: UIView {
         let likedproducts = realm.objects(MSLikedProduct.self).filter("id == %@",selectedProduct)
         if let thatProduct = likedproducts.first {
             if thatProduct.isLiked == true {
-                
                 sender.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
                 isLiked = true
             } else {

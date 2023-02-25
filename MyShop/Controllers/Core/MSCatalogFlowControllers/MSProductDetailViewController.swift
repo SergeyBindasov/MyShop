@@ -16,7 +16,6 @@ final class MSProductDetailViewController: UIViewController {
     
     let realm = try! Realm()
     
-    
     public weak var delegate: MSProductDetailViewControllerDelegate?
     
     var imageToShare = UIImage()

@@ -19,27 +19,30 @@ final class MSWishlistCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         layout.scrollDirection = .horizontal
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collection.backgroundColor = .white
+        collection.register(MSLikedProductCell.self, forCellWithReuseIdentifier: MSLikedProductCell.identifier)
+        collection.backgroundColor = .systemBackground
+        collection.showsHorizontalScrollIndicator = false
         return collection
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemRed.withAlphaComponent(0.5)
+        contentView.backgroundColor = .systemBackground
         contentView.addSubviews(likedCollection)
         setupLayout()
         likedCollection.delegate = viewModel
         likedCollection.dataSource = viewModel
-        
     }
+    
+    
+    
     required init?(coder: NSCoder) {
         fatalError("unsupported")
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: 150),
+            contentView.heightAnchor.constraint(equalToConstant: 180),
             likedCollection.topAnchor.constraint(equalTo: contentView.topAnchor),
             likedCollection.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             likedCollection.rightAnchor.constraint(equalTo: contentView.rightAnchor),
@@ -47,3 +50,5 @@ final class MSWishlistCell: UITableViewCell {
             ])
     }
 }
+
+

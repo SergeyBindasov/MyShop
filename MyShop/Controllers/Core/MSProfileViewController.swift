@@ -20,7 +20,7 @@ final class MSProfileViewController: UIViewController {
         viewModel.delegate = self
         addView()
     }
-    
+ 
     func addView() {
         view.addSubviews(profileView)
         NSLayoutConstraint.activate([
