@@ -14,10 +14,10 @@ protocol MSProfileViewViewModelDelegate: AnyObject {
 final class MSProfileViewViewModel: NSObject {
     
     var customer: MSCustomer?
-    
+        
     public weak var delegate: MSProfileViewViewModelDelegate?
     
-    public func fetchCustomerInfo(id: Int) { //-> MSCustomer {
+    public func fetchCustomerInfo(id: Int) { 
         MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(id)), expecting: MSCustomer.self) { [weak self] result in
             switch result {
             case .success(let response):
@@ -68,10 +68,16 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
         return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSBankCardCell.identifier, for: indexPath) as? MSBankCardCell else { fatalError() }
+            cell.configure(with: customer)
         return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSWishlistCell.identifier, for: indexPath) as? MSWishlistCell else { fatalError() }
             return cell
         }
 }
-} 
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.section)
+    }
+}
+

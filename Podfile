@@ -8,4 +8,5 @@ target 'MyShop' do
   # Pods for MyShop
 pod 'RealmSwift', '~>10'
 pod 'SwipeCellKit'
+pod 'CreditCardView'
 end

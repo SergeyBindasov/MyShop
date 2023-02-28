@@ -12,7 +12,7 @@ final class MSProfileView: UIView {
     private let customer: MSCustomer?
     
     let viewModel = MSProfileViewViewModel()
-    
+   
     lazy var profileTableView: UITableView = {
        let table = UITableView(frame: .zero, style: .grouped)
        table.translatesAutoresizingMaskIntoConstraints = false
@@ -54,3 +54,5 @@ final class MSProfileView: UIView {
         ])
     }
 }
+
+

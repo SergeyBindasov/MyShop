@@ -10,7 +10,7 @@ import UIKit
 final class MSLikedProductCell: UICollectionViewCell {
     
     static let identifier = "likedProductCell"
-    
+        
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -34,7 +34,6 @@ final class MSLikedProductCell: UICollectionViewCell {
         contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubviews(imageView, nameLabel)
         setupLayout()
-        
     }
 
     
@@ -59,7 +58,7 @@ final class MSLikedProductCell: UICollectionViewCell {
             nameLabel.text = product.title
         
     }
- 
+
     private func setupLayout() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
@@ -74,3 +73,4 @@ final class MSLikedProductCell: UICollectionViewCell {
             ])
     }
 }
+

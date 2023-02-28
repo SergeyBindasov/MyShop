@@ -11,8 +11,8 @@ final class MSWishlistCell: UITableViewCell {
     
     static let identifier = "wishlistCell"
     
-    let viewModel = MSWishlistCellVieModel()
-    
+    let viewModel = MSWishlistCellViewModel()
+
     lazy var likedCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -50,5 +50,6 @@ final class MSWishlistCell: UITableViewCell {
             ])
     }
 }
+
 
 
