@@ -20,6 +20,7 @@ final class MSProfileView: UIView {
         table.register(MSAdressCell.self, forCellReuseIdentifier: MSAdressCell.identifier)
         table.register(MSBankCardCell.self, forCellReuseIdentifier: MSBankCardCell.identifier)
         table.register(MSWishlistCell.self, forCellReuseIdentifier: MSWishlistCell.identifier)
+        table.showsVerticalScrollIndicator = false
         table.backgroundColor = .systemBackground
        return table
    }()
