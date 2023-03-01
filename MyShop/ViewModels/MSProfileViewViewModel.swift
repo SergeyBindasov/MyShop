@@ -6,18 +6,28 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol MSProfileViewViewModelDelegate: AnyObject {
     func didLoadCustomerInfo()
+    func didTapOnLikedProductAtIndex(product: MSProduct, viewModel: MSProfileViewViewModel)
 }
+
+typealias ProductClosure = ((_ likedProduct: MSProduct) -> Void)
 
 final class MSProfileViewViewModel: NSObject {
     
+    let realm = try! Realm()
+    var products: Results<MSLikedProduct>?
+    
     var customer: MSCustomer?
-        
+    var product: MSProduct?
+    
+    var likedClosure: ProductClosure?
+    
     public weak var delegate: MSProfileViewViewModelDelegate?
     
-    public func fetchCustomerInfo(id: Int) { 
+    public func fetchCustomerInfo(id: Int) {
         MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(id)), expecting: MSCustomer.self) { [weak self] result in
             switch result {
             case .success(let response):
@@ -25,26 +35,51 @@ final class MSProfileViewViewModel: NSObject {
                 self?.customer = response
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadCustomerInfo()
-
+                    
                 }
             case .failure(let error):
                 print(String(describing: error))
             }
         }
     }
+    public func getProductFromCell(index: Int) {
+        if let productId = products?[index].id {
+            
+            MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.productUrl + "/" + String(productId)), expecting: MSProduct.self) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    print(response)
+                    self?.product = response
+                    DispatchQueue.main.async {
+                        self?.likedClosure?(self!.product!)
+                       // self?.delegate?.didTapOnLikedProductAtIndex(product: (self?.product!)!, viewModel: self!)
+                    }
+                case .failure(let error):
+                    print(String(describing: error))
+                }
+            }
+        }
+    }
+    
+
+    override init() {
+        super.init()
+        products = realm.objects(MSLikedProduct.self)
+    }
 }
+
 
 extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         4
     }
- 
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Personal information"
         } else if section == 1 {
-                return "Delivery adress"
+            return "Delivery adress"
         } else if section == 2{
             return "Saved bank cards"
         } else {
@@ -61,23 +96,27 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSPersonalInfoCell.identifier, for: indexPath) as? MSPersonalInfoCell else { fatalError() }
             cell.configure(with: customer)
-        return cell
+            return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSAdressCell.identifier, for: indexPath) as? MSAdressCell else { fatalError() }
             cell.configure(with: customer)
-        return cell
+            return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSBankCardCell.identifier, for: indexPath) as? MSBankCardCell else { fatalError() }
             cell.configure(with: customer)
-        return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MSWishlistCell.identifier, for: indexPath) as? MSWishlistCell else { fatalError() }
             return cell
+        } else if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MSWishlistCell.identifier, for: indexPath) as? MSWishlistCell else { fatalError() }
+            cell.didSelectClosure = {
+                tableIndex, collectionIndex  in
+                if let collectionIndex = collectionIndex {
+                    self.getProductFromCell(index: collectionIndex)
+                }
+            }
+            return cell
+        } else {
+            return UITableViewCell()
         }
-}
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.section)
     }
 }
 

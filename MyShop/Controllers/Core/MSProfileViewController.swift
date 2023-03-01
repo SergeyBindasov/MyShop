@@ -10,7 +10,6 @@ import UIKit
 final class MSProfileViewController: UIViewController {
     
     let viewModel = MSProfileViewViewModel()
-   let cellViewModel = MSWishlistCellViewModel()
     
     let profileView = MSProfileView(frame: .zero, customer: nil)
 
@@ -19,12 +18,11 @@ final class MSProfileViewController: UIViewController {
         title = "Profile"
         view.backgroundColor = .systemBackground
         viewModel.delegate = self
-        cellViewModel.delegate = self
         addView()
     }
  
     func addView() {
-       
+
         view.addSubviews(profileView)
         NSLayoutConstraint.activate([
             profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -36,17 +34,16 @@ final class MSProfileViewController: UIViewController {
 }
 
 extension MSProfileViewController: MSProfileViewViewModelDelegate {
+   
+    // Я не понимаю почему метод делегата на срабатывает
+    func didTapOnLikedProductAtIndex(product: MSProduct, viewModel: MSProfileViewViewModel) {
+        let detailsVC = MSProductDetailViewController(product: product)
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
     func didLoadCustomerInfo() {
         profileView.profileTableView.reloadData()
     }
 }
-extension MSProfileViewController: MSWishlistCellViewModelDelegate {
-    func didTapOnLikedProduct(at number: Int, forModel viewModel: MSWishlistCellViewModel, forCell cell: MSLikedProductCell, controller: MSProfileViewController) {
-        // НАДО СДЕЛАТЬ ОТКРЫТИЕ DETAILS VC
-    }
-    
-}
-    
-    
 
 
