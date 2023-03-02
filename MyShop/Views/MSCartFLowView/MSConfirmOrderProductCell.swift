@@ -94,8 +94,6 @@ final class MSConfirmOrderProductCell: UITableViewCell {
             priceLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             quantityLabel.centerYAnchor.constraint(equalTo: productImage.centerYAnchor),
             quantityLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -85)
-            
-            
         ])
     }
 }

@@ -55,8 +55,8 @@ final class MSCartOrderCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubviews(completeOrederButton, priceLabel, itemsLabel)
         setupConstraints()
-        
     }
+    
     required init?(coder: NSCoder) {
         fatalError("unsupported")
     }

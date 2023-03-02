@@ -64,13 +64,22 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return products?.count ?? 0
+        } else if section == 1 {
+            return 1
+            
         } else {
             return 5
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if indexPath.section == 0 {
+            return 80
+        } else if indexPath.section == 1 {
+            return 40
+        } else {
+            return 20
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,6 +89,8 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return  cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderTotalCell.identifier, for: indexPath) as? MSConfirmOrderTotalCell else { fatalError() }
+            guard let productsArray = products else {  fatalError() }
+            cell.configure(products: Array(productsArray))
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderDeliveryCell.identifier, for: indexPath) as? MSConfirmOrderDeliveryCell else { fatalError() }
