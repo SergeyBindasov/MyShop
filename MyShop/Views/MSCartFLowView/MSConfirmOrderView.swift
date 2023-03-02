@@ -13,6 +13,8 @@ final class MSConfirmOrderView: UIView {
     let realm = try! Realm()
     var products: Results<MSSavedProduct>?
     
+    var customer: MSCustomer?
+    
     lazy var confirmOrderTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +35,7 @@ final class MSConfirmOrderView: UIView {
         confirmOrderTableView.delegate = self
         confirmOrderTableView.dataSource = self
         addConstraints()
-       
+  
     }
     
     required init?(coder: NSCoder) {
@@ -66,7 +68,8 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return products?.count ?? 0
         } else if section == 1 {
             return 1
-            
+        } else if section == 2 {
+            return 1
         } else {
             return 5
         }
@@ -77,12 +80,15 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return 80
         } else if indexPath.section == 1 {
             return 40
+        } else if indexPath.section == 2 {
+            return 200
         } else {
             return 20
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderProductCell.identifier, for: indexPath) as? MSConfirmOrderProductCell else { fatalError() }
             cell.configure(with: (products?[indexPath.row])!)
@@ -94,9 +100,22 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderDeliveryCell.identifier, for: indexPath) as? MSConfirmOrderDeliveryCell else { fatalError() }
+            MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(11)), expecting: MSCustomer.self) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    print(response)
+                    self?.customer = response
+                    DispatchQueue.main.async {
+                        cell.configure(with: (self?.customer!)!)
+                    }
+                case .failure(let error):
+                    print(String(describing: error))
+                }
+            }
             return cell
         } else if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderPayCell.identifier, for: indexPath) as? MSConfirmOrderPayCell else { fatalError() }
+            
             return cell
         } else {
             return UITableViewCell()

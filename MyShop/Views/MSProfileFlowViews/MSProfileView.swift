@@ -40,10 +40,10 @@ final class MSProfileView: UIView {
     }
     
     func tableViewMethods() {
-        let randomInt = Int.random(in: 0...99)
+        //let randomInt = Int.random(in: 0...99)
         profileTableView.dataSource = viewModel
         profileTableView.delegate = viewModel
-        viewModel.fetchCustomerInfo(id: randomInt)
+        viewModel.fetchCustomerInfo(id: 11)
     }
     
     private func setupLayout() {

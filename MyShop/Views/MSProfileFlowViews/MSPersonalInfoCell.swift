@@ -15,7 +15,6 @@ final class MSPersonalInfoCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor = .label
-        //label.text = "Ivan Ivanov"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
