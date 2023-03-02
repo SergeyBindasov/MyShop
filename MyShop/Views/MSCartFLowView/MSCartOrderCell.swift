@@ -62,7 +62,7 @@ final class MSCartOrderCell: UITableViewCell {
     }
     
     func configure(products: [MSSavedProduct]) {
-        let price = (products.map({$0.price}).reduce(0, +))
+        let price = (products.map({$0.price * $0.quantity}).reduce(0, +))
         priceLabel.text = String(price) + " " + "$"
         let count = (products.map({$0.quantity}).reduce(0, +))
         itemsLabel.text = String(count) + " " + "items in your cart"
