@@ -100,10 +100,10 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderDeliveryCell.identifier, for: indexPath) as? MSConfirmOrderDeliveryCell else { fatalError() }
-            MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(11)), expecting: MSCustomer.self) { [weak self] result in
+            MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(customer?.id ?? 1)), expecting: MSCustomer.self) { [weak self] result in
                 switch result {
                 case .success(let response):
-                    print(response)
+                    //print(response)
                     self?.customer = response
                     DispatchQueue.main.async {
                         cell.configure(with: (self?.customer!)!)

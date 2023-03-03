@@ -31,9 +31,33 @@ final class MSProfileViewViewModel: NSObject {
         MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(id)), expecting: MSCustomer.self) { [weak self] result in
             switch result {
             case .success(let response):
-                print(response)
                 self?.customer = response
                 DispatchQueue.main.async {
+                    let newCustomer = MSSavedCustomer()
+                    let savedAdress = SavedAddress()
+                    let savedBank = SavedBank()
+                    newCustomer.id = response.id
+                    newCustomer.firstName = response.firstName
+                    newCustomer.lastName = response.lastName
+                    newCustomer.email = response.email
+                    newCustomer.phone = response.phone
+                    savedAdress.address = response.address.address
+                    savedAdress.city = response.address.city
+                    savedAdress.postalCode = response.address.postalCode
+                    savedAdress.state = response.address.state
+                    savedBank.cardType = response.bank.cardType
+                    savedBank.cardExpire = response.bank.cardExpire
+                    savedBank.cardNumber = response.bank.cardNumber
+                    newCustomer.address.append(savedAdress)
+                    newCustomer.bank.append(savedBank)
+                    do {
+                        try self?.realm.write({
+                            self?.realm.add(newCustomer)
+                        })
+                        
+                    } catch {
+                        print ("error saving context \(error)")
+                    }
                     self?.delegate?.didLoadCustomerInfo()
                     
                 }
@@ -51,8 +75,7 @@ final class MSProfileViewViewModel: NSObject {
                     print(response)
                     self?.product = response
                     DispatchQueue.main.async {
-                        self?.likedClosure?(self!.product!)
-                       // self?.delegate?.didTapOnLikedProductAtIndex(product: (self?.product!)!, viewModel: self!)
+                       self?.delegate?.didTapOnLikedProductAtIndex(product: (self?.product!)!, viewModel: self!)
                     }
                 case .failure(let error):
                     print(String(describing: error))

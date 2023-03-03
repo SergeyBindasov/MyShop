@@ -12,14 +12,16 @@ final class MSProfileViewController: UIViewController {
     let viewModel = MSProfileViewViewModel()
     
     let profileView = MSProfileView(frame: .zero, customer: nil)
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .systemBackground
         viewModel.delegate = self
         addView()
+  
     }
+    
  
     func addView() {
 

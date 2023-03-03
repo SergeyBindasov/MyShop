@@ -14,6 +14,4 @@ final class MSSavedProduct: Object {
     @objc dynamic var title = ""
     @objc dynamic var url = ""
     @objc dynamic var price = 0
-    
-    
 }

@@ -91,15 +91,35 @@ final class MSConfirmOrderDeliveryCell: UITableViewCell {
         return label
     }()
     
+    private lazy var changeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Edit", for: .normal)
+        button.setTitleColor(UIColor.systemBackground, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.backgroundColor = .systemTeal
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(changeButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
-        contentView.addSubviews(cityLabel, postalLabel, stateLabel, addressLabel, contactInfoLabel, nameLabel, secondNameLabel, phoneLabel)
+        contentView.addSubviews(cityLabel, postalLabel, stateLabel, addressLabel, contactInfoLabel, nameLabel, secondNameLabel, phoneLabel, changeButton)
         setupLayout()
     }
     required init?(coder: NSCoder) {
         fatalError("unsupported")
+    }
+    
+    @objc func changeButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.4
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            sender.alpha = 1
+        }
     }
     
     func configure(with customer: MSCustomer) {
@@ -131,6 +151,10 @@ final class MSConfirmOrderDeliveryCell: UITableViewCell {
             secondNameLabel.leftAnchor.constraint(equalTo: nameLabel.rightAnchor, constant: 5),
             phoneLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7),
             phoneLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            changeButton.widthAnchor.constraint(equalToConstant: 80),
+            changeButton.heightAnchor.constraint(equalToConstant: 30),
+            changeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            changeButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20)
         ])
 }
 }
