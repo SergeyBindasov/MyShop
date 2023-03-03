@@ -11,6 +11,13 @@ final class MSPersonalInfoCell: UITableViewCell {
     
     static let identifier = "infoCell"
     
+    private let infoView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "main")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -65,10 +72,12 @@ final class MSPersonalInfoCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemTeal.withAlphaComponent(0.7)
-        contentView.layer.cornerRadius = 8
+        contentView.backgroundColor = .systemBackground
+        contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
-        contentView.addSubviews(nameLabel, secondNameLabel, mailLabel, phoneLabel, avatarImage)
+        contentView.addSubviews(infoView)
+        infoView.applyLayer()
+        infoView.addSubviews(nameLabel, secondNameLabel, mailLabel, phoneLabel, avatarImage)
         setupLayout()
         
     }
@@ -99,19 +108,24 @@ final class MSPersonalInfoCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            infoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            infoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            infoView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
+            infoView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+            
+            nameLabel.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 15),
+            nameLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 15),
             secondNameLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             secondNameLabel.leftAnchor.constraint(equalTo: nameLabel.rightAnchor, constant: 5),
             mailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
-            mailLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            mailLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 15),
             phoneLabel.topAnchor.constraint(equalTo: mailLabel.bottomAnchor, constant: 7),
-            phoneLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-            avatarImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
-            avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            phoneLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 15),
+            avatarImage.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -5),
+            avatarImage.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 15),
             avatarImage.widthAnchor.constraint(equalToConstant: 100),
             avatarImage.heightAnchor.constraint(equalToConstant: 100),
-            avatarImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            avatarImage.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -20),
         ])
     }
     

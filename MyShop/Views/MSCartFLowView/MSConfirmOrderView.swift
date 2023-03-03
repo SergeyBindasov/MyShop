@@ -75,13 +75,13 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 80
+            return 100
         } else if indexPath.section == 1 {
             return 40
         } else if indexPath.section == 2 {
-            return 200
+            return 240
         } else {
-            return 160
+            return 190
         }
     }
     
@@ -89,6 +89,7 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
         guard let theLastCustomer = customers?.last else {  fatalError() }
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderProductCell.identifier, for: indexPath) as? MSConfirmOrderProductCell else { fatalError() }
+            cell.backgroundColor = .systemBackground
             cell.configure(with: (products?[indexPath.row])!)
             return  cell
         } else if indexPath.section == 1 {

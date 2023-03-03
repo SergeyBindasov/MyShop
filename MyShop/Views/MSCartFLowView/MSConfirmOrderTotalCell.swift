@@ -30,9 +30,10 @@ final class MSConfirmOrderTotalCell: UITableViewCell {
         return label
     }()
     
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .systemBackground
         contentView.addSubviews(priceLabel, itemsLabel)
         setupConstraints()
     }

@@ -16,8 +16,7 @@ protocol MSCartViewModelDelegate: AnyObject {
 final class MSCartViewModel: NSObject {
     
     weak var delegate: MSCartViewModelDelegate?
-    
-    
+
     var productsInCart = MSRealmManager.shared.loadSavedProducts()
     let realm = try! Realm()
     var products: Results<MSSavedProduct>?

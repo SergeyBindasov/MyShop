@@ -10,6 +10,13 @@ import UIKit
 final class MSConfirmOrderProductCell: UITableViewCell {
     static let identifier = "confirmOrderProductCell"
     
+    private let productView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "main")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let productImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -49,12 +56,13 @@ final class MSConfirmOrderProductCell: UITableViewCell {
         return label
     }()
     
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
-        contentView.addSubviews(productImage, nameLabel, quantityLabel, priceLabel)
+        productView.applyLayer()
+        contentView.layer.masksToBounds = true
+        contentView.addSubviews(productView)
+        productView.addSubviews(productImage, nameLabel, quantityLabel, priceLabel)
         setupLayout()
     }
     required init?(coder: NSCoder) {
@@ -82,8 +90,13 @@ final class MSConfirmOrderProductCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            productImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            productImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            productView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            productView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            productView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            productView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            
+            productImage.topAnchor.constraint(equalTo: productView.topAnchor, constant: 5),
+            productImage.leftAnchor.constraint(equalTo: productView.leftAnchor, constant: 10),
             productImage.widthAnchor.constraint(equalToConstant: 70),
             productImage.heightAnchor.constraint(equalToConstant: 70),
             nameLabel.centerYAnchor.constraint(equalTo: productImage.centerYAnchor),
@@ -91,9 +104,9 @@ final class MSConfirmOrderProductCell: UITableViewCell {
             nameLabel.heightAnchor.constraint(equalToConstant: 70),
             nameLabel.widthAnchor.constraint(equalToConstant: 180),
             priceLabel.centerYAnchor.constraint(equalTo: productImage.centerYAnchor),
-            priceLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            priceLabel.rightAnchor.constraint(equalTo: productView.rightAnchor, constant: -10),
             quantityLabel.centerYAnchor.constraint(equalTo: productImage.centerYAnchor),
-            quantityLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -85)
+            quantityLabel.rightAnchor.constraint(equalTo: productView.rightAnchor, constant: -85)
         ])
     }
 }

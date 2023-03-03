@@ -12,12 +12,13 @@ final class MSBankCardCell: UITableViewCell {
     
     static let identifier = "bankCardCell"
  
-    lazy var cardView = CreditCardView(frame: CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 180), template: .Curve(.systemMint, .systemTeal, .systemMint, .systemTeal, .systemMint))
+    lazy var cardView = CreditCardView(frame: CGRect(x: 0, y: 0, width: 360, height: 180), template: .Curve(.systemMint, .systemTeal, .systemMint, .systemTeal, .systemMint))
             
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
         contentView.addSubviews(cardView)
+        cardView.applyLayer()
         setupLayout()
         
     }
@@ -36,10 +37,15 @@ final class MSBankCardCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cardView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            cardView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+//            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            cardView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+//            cardView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+//            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            cardView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            cardView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            cardView.widthAnchor.constraint(equalToConstant: 320),
+            cardView.heightAnchor.constraint(equalToConstant: 180)
+            
             ])
     }
 }

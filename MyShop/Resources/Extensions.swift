@@ -13,6 +13,15 @@ extension UIView {
             addSubview($0)
         })
     }
+    
+    func applyLayer() {
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 12
+        self.layer.shadowRadius = 4
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOpacity = 0.30
+        self.layer.shadowOffset = CGSize(width: 0, height: 5)
+    }
 }
 
 //extension UIImageView {

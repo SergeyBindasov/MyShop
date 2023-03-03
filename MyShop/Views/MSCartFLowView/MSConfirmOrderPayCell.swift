@@ -11,6 +11,13 @@ import PassKit
 final class MSConfirmOrderPayCell: UITableViewCell {
     static let identifier = "confirmOrderPayCell"
     
+    private let payView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "main")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let cardInfoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -57,7 +64,7 @@ final class MSConfirmOrderPayCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(systemName: "plus.circle")?.withRenderingMode(.alwaysTemplate)
         button.setBackgroundImage(image, for: .normal)
-        button.tintColor = UIColor.systemTeal
+        button.tintColor = UIColor(named: "button")
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         return button
@@ -69,8 +76,12 @@ final class MSConfirmOrderPayCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         payButton.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(cardInfoLabel, cardNumberLabel, expireLabel, paymentSystemLabel, addCardButton, payButton)
+        contentView.backgroundColor = .systemBackground
+        contentView.addSubviews(payView)
+        payView.applyLayer()
+        addCardButton.applyLayer()
+        payButton.applyLayer()
+        payView.addSubviews(cardInfoLabel, cardNumberLabel, expireLabel, paymentSystemLabel, addCardButton, payButton)
         setupLayout()
     }
     required init?(coder: NSCoder) {
@@ -94,22 +105,27 @@ final class MSConfirmOrderPayCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            cardInfoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            cardInfoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-            cardNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            payView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            payView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            payView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            payView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            
+            cardInfoLabel.topAnchor.constraint(equalTo: payView.topAnchor, constant: 15),
+            cardInfoLabel.leftAnchor.constraint(equalTo: payView.leftAnchor, constant: 15),
+            cardNumberLabel.leftAnchor.constraint(equalTo: payView.leftAnchor, constant: 15),
             cardNumberLabel.topAnchor.constraint(equalTo: cardInfoLabel.bottomAnchor, constant: 7),
             expireLabel.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
             expireLabel.leftAnchor.constraint(equalTo: cardNumberLabel.rightAnchor, constant: 15),
-            paymentSystemLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            paymentSystemLabel.leftAnchor.constraint(equalTo: payView.leftAnchor, constant: 15),
             paymentSystemLabel.topAnchor.constraint(equalTo: cardNumberLabel.bottomAnchor, constant: 7),
-            addCardButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            addCardButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -40),
+            addCardButton.topAnchor.constraint(equalTo: payView.topAnchor, constant: 15),
+            addCardButton.rightAnchor.constraint(equalTo: payView.rightAnchor, constant: -40),
             addCardButton.widthAnchor.constraint(equalToConstant: 30),
             addCardButton.heightAnchor.constraint(equalToConstant: 30),
             payButton.topAnchor.constraint(equalTo: paymentSystemLabel.bottomAnchor, constant: 20),
             payButton.widthAnchor.constraint(equalToConstant: 240),
             payButton.heightAnchor.constraint(equalToConstant: 50),
-            payButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            payButton.centerXAnchor.constraint(equalTo: payView.centerXAnchor)
         ])
 }
 }

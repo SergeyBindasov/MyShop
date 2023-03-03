@@ -108,7 +108,7 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
             return " My wishlist"
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -118,14 +118,18 @@ extension MSProfileViewViewModel: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSPersonalInfoCell.identifier, for: indexPath) as? MSPersonalInfoCell else { fatalError() }
             cell.configure(with: customer)
+            cell.backgroundColor = .systemBackground
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSAdressCell.identifier, for: indexPath) as? MSAdressCell else { fatalError() }
             cell.configure(with: customer)
+            cell.backgroundColor = .systemBackground
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSBankCardCell.identifier, for: indexPath) as? MSBankCardCell else { fatalError() }
             cell.configure(with: customer)
+            cell.backgroundColor = .systemBackground
             return cell
         } else if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSWishlistCell.identifier, for: indexPath) as? MSWishlistCell else { fatalError() }
