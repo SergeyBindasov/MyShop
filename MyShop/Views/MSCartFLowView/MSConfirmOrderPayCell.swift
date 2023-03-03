@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PassKit
 
 final class MSConfirmOrderPayCell: UITableViewCell {
     static let identifier = "confirmOrderPayCell"
@@ -21,12 +22,94 @@ final class MSConfirmOrderPayCell: UITableViewCell {
         return label
     }()
     
+    private let cardNumberLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .label
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let expireLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .label
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let paymentSystemLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .label
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var addCardButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "plus.circle")?.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(image, for: .normal)
+        button.tintColor = UIColor.systemTeal
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var payButton = PKPaymentButton.init(paymentButtonType: .buy, paymentButtonStyle: .automatic)
+
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemBackground
-        contentView.addSubviews(cardInfoLabel)
+        payButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .secondarySystemBackground
+        contentView.addSubviews(cardInfoLabel, cardNumberLabel, expireLabel, paymentSystemLabel, addCardButton, payButton)
+        setupLayout()
     }
     required init?(coder: NSCoder) {
         fatalError("unsupported")
     }
+    
+    @objc func addButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.4
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            sender.alpha = 1
+        }
+    }
+    
+    func configure(with customerBankData: SavedBank) {
+        let number = String(customerBankData.cardNumber.suffix(4))
+        cardNumberLabel.text = "*********" + number
+        expireLabel.text = customerBankData.cardExpire
+        paymentSystemLabel.text = customerBankData.cardType.uppercased()
+        
+    }
+    
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            cardInfoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            cardInfoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            cardNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            cardNumberLabel.topAnchor.constraint(equalTo: cardInfoLabel.bottomAnchor, constant: 7),
+            expireLabel.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
+            expireLabel.leftAnchor.constraint(equalTo: cardNumberLabel.rightAnchor, constant: 15),
+            paymentSystemLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            paymentSystemLabel.topAnchor.constraint(equalTo: cardNumberLabel.bottomAnchor, constant: 7),
+            addCardButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            addCardButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -40),
+            addCardButton.widthAnchor.constraint(equalToConstant: 30),
+            addCardButton.heightAnchor.constraint(equalToConstant: 30),
+            payButton.topAnchor.constraint(equalTo: paymentSystemLabel.bottomAnchor, constant: 20),
+            payButton.widthAnchor.constraint(equalToConstant: 240),
+            payButton.heightAnchor.constraint(equalToConstant: 50),
+            payButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        ])
+}
 }

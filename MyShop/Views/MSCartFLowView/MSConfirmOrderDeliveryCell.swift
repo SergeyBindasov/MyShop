@@ -155,7 +155,7 @@ final class MSConfirmOrderDeliveryCell: UITableViewCell {
             changeButton.widthAnchor.constraint(equalToConstant: 80),
             changeButton.heightAnchor.constraint(equalToConstant: 30),
             changeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            changeButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20)
+            changeButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
         ])
 }
 }

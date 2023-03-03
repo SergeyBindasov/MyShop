@@ -31,7 +31,6 @@ class SavedAddress: Object {
     let parentCategory = LinkingObjects(fromType: MSSavedCustomer.self, property: "address")
 }
 
-
 class SavedBank: Object {
     @objc dynamic var cardExpire: String = ""
     @objc dynamic var cardNumber: String = ""

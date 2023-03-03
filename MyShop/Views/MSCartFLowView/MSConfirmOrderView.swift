@@ -36,7 +36,7 @@ final class MSConfirmOrderView: UIView {
         confirmOrderTableView.delegate = self
         confirmOrderTableView.dataSource = self
         addConstraints()
-  
+        
     }
     
     required init?(coder: NSCoder) {
@@ -68,12 +68,8 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return products?.count ?? 0
-        } else if section == 1 {
-            return 1
-        } else if section == 2 {
-            return 1
         } else {
-            return 5
+            return 1
         }
     }
     
@@ -85,12 +81,12 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             return 200
         } else {
-            return 20
+            return 160
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        guard let theLastCustomer = customers?.last else {  fatalError() }
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderProductCell.identifier, for: indexPath) as? MSConfirmOrderProductCell else { fatalError() }
             cell.configure(with: (products?[indexPath.row])!)
@@ -102,17 +98,15 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderDeliveryCell.identifier, for: indexPath) as? MSConfirmOrderDeliveryCell else { fatalError() }
-            if let theLastCustomer = customers?.last {
-                for address in theLastCustomer.address {
-                    cell.configure(with: theLastCustomer, with: address)
-                }
-               // cell.configure(with: theLastCustomer, with: <#T##SavedAddress#>)
+            for address in theLastCustomer.address {
+                cell.configure(with: theLastCustomer, with: address)
             }
-            //cell.configure(with: <#T##MSSavedCustomer#>, with: <#T##SavedAddress#>)
             return cell
         } else if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderPayCell.identifier, for: indexPath) as? MSConfirmOrderPayCell else { fatalError() }
-            
+            for bank in theLastCustomer.bank {
+                cell.configure(with: bank)
+            }
             return cell
         } else {
             return UITableViewCell()

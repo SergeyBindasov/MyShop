@@ -83,7 +83,6 @@ final class MSProfileViewViewModel: NSObject {
             }
         }
     }
-    
 
     override init() {
         super.init()
