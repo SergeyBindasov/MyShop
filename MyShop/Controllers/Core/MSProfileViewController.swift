@@ -19,10 +19,8 @@ final class MSProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         viewModel.delegate = self
         addView()
-  
     }
     
- 
     func addView() {
 
         view.addSubviews(profileView)

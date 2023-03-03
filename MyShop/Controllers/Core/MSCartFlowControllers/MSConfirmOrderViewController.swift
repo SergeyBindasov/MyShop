@@ -11,8 +11,6 @@ final class MSConfirmOrderViewController: UIViewController {
     
     let confirmOrderView = MSConfirmOrderView()
     
-    weak var profileVC: MSProfileViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Confirm Your Order"

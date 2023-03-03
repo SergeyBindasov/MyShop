@@ -12,6 +12,7 @@ final class MSConfirmOrderView: UIView {
     
     let realm = try! Realm()
     var products: Results<MSSavedProduct>?
+    var customers: Results<MSSavedCustomer>?
     
     var customer: MSCustomer?
     
@@ -31,7 +32,7 @@ final class MSConfirmOrderView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(confirmOrderTableView)
-        loadProducts()
+        loadProductsAndCustomers()
         confirmOrderTableView.delegate = self
         confirmOrderTableView.dataSource = self
         addConstraints()
@@ -42,8 +43,9 @@ final class MSConfirmOrderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadProducts() {
+    func loadProductsAndCustomers() {
         products = realm.objects(MSSavedProduct.self)
+        customers = realm.objects(MSSavedCustomer.self)
         confirmOrderTableView.reloadData()
     }
     
@@ -100,18 +102,13 @@ extension MSConfirmOrderView: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderDeliveryCell.identifier, for: indexPath) as? MSConfirmOrderDeliveryCell else { fatalError() }
-            MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(customer?.id ?? 1)), expecting: MSCustomer.self) { [weak self] result in
-                switch result {
-                case .success(let response):
-                    //print(response)
-                    self?.customer = response
-                    DispatchQueue.main.async {
-                        cell.configure(with: (self?.customer!)!)
-                    }
-                case .failure(let error):
-                    print(String(describing: error))
+            if let theLastCustomer = customers?.last {
+                for address in theLastCustomer.address {
+                    cell.configure(with: theLastCustomer, with: address)
                 }
+               // cell.configure(with: theLastCustomer, with: <#T##SavedAddress#>)
             }
+            //cell.configure(with: <#T##MSSavedCustomer#>, with: <#T##SavedAddress#>)
             return cell
         } else if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MSConfirmOrderPayCell.identifier, for: indexPath) as? MSConfirmOrderPayCell else { fatalError() }

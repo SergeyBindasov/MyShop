@@ -42,7 +42,7 @@ final class MSProductDetailViewController: UIViewController {
                   barButtonSystemItem: .action,
                   target: self,
                   action: #selector(didTapShare))
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
         //print(realm.objects(MSLikedProduct.self).count)
     }
     

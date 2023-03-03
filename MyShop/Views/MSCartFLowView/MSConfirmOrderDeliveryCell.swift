@@ -122,14 +122,15 @@ final class MSConfirmOrderDeliveryCell: UITableViewCell {
         }
     }
     
-    func configure(with customer: MSCustomer) {
-        cityLabel.text = "City: \(customer.address.city)"
-        stateLabel.text = "State: \(customer.address.state)"
-        postalLabel.text = "Postal code: \(customer.address.postalCode)"
-        addressLabel.text = "Address: \(customer.address.address)"
+    func configure(with customer: MSSavedCustomer, with address: SavedAddress) {
+        cityLabel.text = "City: \(address.city)"
+        stateLabel.text = "State: \(address.state)"
+        postalLabel.text = "Postal code: \(address.postalCode)"
+        addressLabel.text = "Address: \(address.address)"
         nameLabel.text = customer.firstName
         secondNameLabel.text = customer.lastName
         phoneLabel.text = customer.phone
+        
     }
     
     private func setupLayout() {

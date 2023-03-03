@@ -18,7 +18,6 @@ final class MSConfirmOrderViewModel {
         MSService.shared.execute(MSRequest(urlPath: MSRequest.URLS.customerUrl + String(id)), expecting: MSCustomer.self) { [weak self] result in
             switch result {
             case .success(let response):
-                //print(response)
                 self?.customer = response
                 DispatchQueue.main.async {
                     tableView.reloadData()
