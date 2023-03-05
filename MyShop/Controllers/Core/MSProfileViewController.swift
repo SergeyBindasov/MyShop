@@ -9,15 +9,13 @@ import UIKit
 
 final class MSProfileViewController: UIViewController {
     
-    let viewModel = MSProfileViewViewModel()
-    
     let profileView = MSProfileView(frame: .zero, customer: nil)
         
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .systemBackground
-        viewModel.delegate = self
+        profileView.viewModel.delegate = self
         addView()
     }
     
@@ -35,7 +33,6 @@ final class MSProfileViewController: UIViewController {
 
 extension MSProfileViewController: MSProfileViewViewModelDelegate {
    
-    // Я не понимаю почему метод делегата на срабатывает
     func didTapOnLikedProductAtIndex(product: MSProduct, viewModel: MSProfileViewViewModel) {
         let detailsVC = MSProductDetailViewController(product: product)
         navigationController?.pushViewController(detailsVC, animated: true)
